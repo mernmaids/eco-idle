@@ -1,0 +1,19 @@
+{
+  "name": "eco-idle",
+  "version": "1.0.0",
+  "description": "idle game about managing an ecosystem",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mernmaids/eco-idle.git"
+  },
+  "author": "mernmaids",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mernmaids/eco-idle/issues"
+  },
+  "homepage": "https://github.com/mernmaids/eco-idle#readme"
+}
