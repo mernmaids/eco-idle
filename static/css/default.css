@@ -1,0 +1,17 @@
+
+body { 
+    font-family: 'Varela Round', sans-serif;
+    color: #03120e;
+}
+
+.dark-green-bg,.bg-dark-green {
+    background-color: #677f70;
+}
+
+.light-green-bg,.bg-light-green {
+    background-color: #a3ccb4;
+}
+
+.bg-light-blue {
+    background-color: #b4cded;
+}
