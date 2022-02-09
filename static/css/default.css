@@ -15,3 +15,22 @@ body {
 .bg-light-blue {
     background-color: #b4cded;
 }
+
+.select-arrow {
+    position: relative;
+    top: 338px;
+    bottom: 0;
+    transform: scale(3,5);
+}
+
+.arrow-left {
+    left: 0px;
+}
+
+.arrow-right {
+    right: 0px;
+}
+
+.pyramid {
+    min-width: 40em;
+}

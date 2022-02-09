@@ -13,7 +13,7 @@
     <script type="module" src="src/App.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body id="not-app" class="lg:overflow-y-hidden">
+<body id="not-app" class="lg:overflow-y-hidden bg-light-green">
     <div class="h-screen">
         <div class="float-left m-0 w-full lg:w-1/6 lg:h-full text-center divide-y bg-dark-green">
             <div class="text-5xl py-3">eco idle</div>
@@ -25,24 +25,32 @@
         <div class="float-left m-0 w-full lg:w-5/6 md:h-full bg-light-green">
             <div class="w-full text-center text-5xl p-5">Organism Points: <b>413k</b></div>
             <div class="float-left w-full lg:w-2/3 ">
-                <div class="flex flex-col text-center items-center overflow-x-hidden mb-10 mt-10">
-                    <div class="pyramid-level flex flex-row">
-                        <div class="h-32 w-32 m-4 bg-slate-900">TP</div>
+                <div class="flex flex-col text-center items-center overflow-y-hidden lg:overflow-x-hiddn mb-10 mt-10 pyramid">
+                    <div class="pyramid-level flex flex-row w-full justify-center">
+                        <div class="select-arrow arrow-left"><</div>
+                        <div class="h-32 w-32 m-4 bg-light-blue">TP</div>
+                        <div class="select-arrow arrow-right">></div>
                     </div>
-                    <div class="pyramid-level flex flex-row">
-                        <div class="h-32 w-32 m-4 bg-slate-900">TP</div>
-                        <div class="h-32 w-32 m-4 bg-slate-900">TP</div>
+                    <div class="pyramid-level flex flex-row w-full justify-center">
+                        <div class="select-arrow arrow-left"><</div>
+                        <div class="h-32 w-32 m-4 bg-light-blue">TP</div>
+                        <div class="h-32 w-32 m-4 bg-light-blue">TP</div>
+                        <div class="select-arrow arrow-right">></div>
                     </div>
-                    <div class="pyramid-level flex flex-row">
-                        <div class="h-32 w-32 m-4 bg-slate-900">TP</div>
-                        <div class="h-32 w-32 m-4 bg-slate-900">TP</div>
-                        <div class="h-32 w-32 m-4 bg-slate-900">TP</div>
+                    <div class="pyramid-level flex flex-row w-full justify-center">
+                        <div class="select-arrow arrow-left"><</div>
+                        <div class="h-32 w-32 m-4 bg-light-blue shrink-0">TP</div>
+                        <div class="h-32 w-32 m-4 bg-light-blue shrink-0">TP</div>
+                        <div class="h-32 w-32 m-4 bg-light-blue shrink-0">TP</div>
+                        <div class="select-arrow arrow-right">></div>
                     </div>
-                    <div class="pyramid-level flex flex-row">
-                        <div class="h-32 w-32 m-4 bg-slate-900">TP</div>
-                        <div class="h-32 w-32 m-4 bg-slate-900">TP</div>
-                        <div class="h-32 w-32 m-4 bg-slate-900">TP</div>
-                        <div class="h-32 w-32 m-4 bg-slate-900">TP</div>
+                    <div class="pyramid-level flex flex-row w-full justify-center shrink-0">
+                        <div class="select-arrow arrow-left"><</div>
+                        <div class="h-32 w-32 m-4 bg-light-blue shrink-0">TP</div>
+                        <div class="h-32 w-32 m-4 bg-light-blue shrink-0">TP</div>
+                        <div class="h-32 w-32 m-4 bg-light-blue shrink-0">TP</div>
+                        <div class="h-32 w-32 m-4 bg-light-blue shrink-0">TP</div>
+                        <div class="select-arrow arrow-right">></div>
                     </div>
                 </div>
             </div>
