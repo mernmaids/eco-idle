@@ -4,6 +4,13 @@ body {
     color: #03120e;
 }
 
+.sector-view {
+    /* background-color: rgba(103,127,112,0.1); */
+    background-image: linear-gradient(rgba(163, 204, 180, 0.4), rgba(163,204,180,0.5), rgba(163,204,180,0.7)), url('/static/img/wallpaper.jpg');
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
 .dark-green-bg,.bg-dark-green {
     background-color: #677f70;
 }
@@ -63,7 +70,7 @@ body {
 
 .organism-point-meter {
     background: linear-gradient(-10deg, #a3ccb4, #338051);
-    animation: gradient 5s ease infinite alternate;
+    animation: gradient 3s ease infinite alternate;
     background-size: 1000% 400%;
     border: solid 4px #03120e;
     width: min-content;
@@ -74,7 +81,7 @@ body {
 
 .organism-point-icon {
     position: relative;
-    margin-top: -11px;
+    margin-top: -12px;
     width: 80px;
     height: 80px;
     stroke-width: 10px;
@@ -102,6 +109,25 @@ body {
 .menu-logo {
     border-bottom: solid 2px #03120e;
     background-color: #677f70;
+}
+
+.menu-logo-o {
+    fill: #03120e;
+    position: relative;
+    width: 27px;
+    height: 27px;
+    top: 10.5px;
+    right: 19px;
+    margin: auto;
+}
+
+.invis-text {
+    color: #677f70;
+}
+
+.menu-logo-text {
+    user-select: none;
+    margin-top: -30px;
 }
 
 .menu-select {

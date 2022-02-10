@@ -16,13 +16,23 @@
 <body id="not-app" class="lg:overflow-y-hidden bg-light-green">
     <div class="h-screen">
         <div class="float-left m-0 w-full lg:w-1/6 lg:h-full text-center bg-dark-green sidebar">
-            <div class="text-5xl py-3 menu-logo">eco idle</div>
+            <div class="text-5xl py-3 menu-logo">
+                <svg class="menu-logo-o" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" stroke="">
+                    <path d="M256,0C114.616,0,0,114.616,0,256s114.616,256,256,256s256-114.616,256-256S397.384,0,256,0z M298.592,395.61
+                        l-20.004,20.006V310.427h-45.177v105.189l-20.004-20.004c-70.627-70.627-70.627-184.928,0-255.557L256,97.462l42.592,42.592
+                        C369.22,210.682,369.22,324.984,298.592,395.61z"/> </svg>
+                <h1 class="menu-logo-text">
+                    ec<span class="invis-text">o</span> idle
+                </h1>
+            </div>
             <div class="text-2xl py-3 menu-select">sector</div>
+            <div class="text-2xl py-3 menu-select">shroom shop</div>
             <div class="text-2xl py-3 menu-select">prestige</div>
             <div class="text-2xl py-3 menu-select">enviro shop</div>
             <div class="text-2xl py-3 menu-select">settings</div>
         </div>
-        <div class="float-left m-0 w-full lg:w-5/6 md:h-full bg-light-green">
+        <div class="float-left m-0 w-full lg:w-5/6 md:h-full bg-light-green sector-view">
             <div class="w-full text-center text-5xl p-5">
                 <div class="p-5 organism-point-meter" title="Organism Points">
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -43,7 +53,7 @@
                             c-0.256,0.469-0.444,0.947-0.606,1.468c-0.179,0.563-0.29,1.109-0.35,1.698c-0.026,0.282-0.162,0.521-0.162,0.811V460.8
                             c0,4.71,3.823,8.533,8.533,8.533s8.533-3.823,8.533-8.533v-42.522C108.058,477.346,179.635,512,256,512
                             c141.158,0,256-114.842,256-256C512,228.335,507.605,201.122,498.961,175.13z"/>
-                        </svg>
+                    </svg>
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                     viewBox="-50 -50 700 700" xml:space="preserve" class="organism-point-icon icon-plant">
                         <path stroke="black" d="M282.266,336.137c0.06,0.137,0.179,0.23,0.239,0.367c0.41,0.836,0.879,1.664,1.579,2.364
@@ -61,40 +71,41 @@
                             c-3.336,3.328-3.336,8.73,0,12.066l87.902,87.902l-23.578,0.009c-6.289,0-38.775-1.109-60.809-23.159
                             c-24.209-24.218-23.108-61.517-23.083-62.234v-34.091l35.61-0.017c6.289,0,38.733,1.109,60.689,23.074
                             C248.542,183.825,247.509,221.133,247.492,221.824z"/>
+                    </svg>
                     <div class="organism-point-readout">413.82k</div>
                 </div>
             </div>
             <div class="float-left w-full lg:w-2/3 overflow-x-scroll lg:overflow-x-hidden">
                 <div class="flex flex-col text-center items-center overflow-y-hidden overflow-x-hidden pyramid">
                     <div class="pyramid-level flex flex-row w-full justify-center">
-                        <div class="select-arrow arrow-left"><</div>
+                        <div class="select-arrow arrow-left">&lt;</div>
                         <div class="h-32 w-32 m-4 bg-light-blue">TP</div>
-                        <div class="select-arrow arrow-right">></div>
+                        <div class="select-arrow arrow-right">&gt;</div>
                     </div>
                     <div class="pyramid-level flex flex-row w-full justify-center">
-                        <div class="select-arrow arrow-left"><</div>
+                        <div class="select-arrow arrow-left">&lt;</div>
                         <div class="h-32 w-32 m-4 bg-light-blue">TP</div>
                         <div class="h-32 w-32 m-4 bg-light-blue">TP</div>
-                        <div class="select-arrow arrow-right">></div>
+                        <div class="select-arrow arrow-right">&gt;</div>
                     </div>
                     <div class="pyramid-level flex flex-row w-full justify-center">
-                        <div class="select-arrow arrow-left"><</div>
+                        <div class="select-arrow arrow-left">&lt;</div>
                         <div class="h-32 w-32 m-4 bg-light-blue shrink-0">TP</div>
                         <div class="h-32 w-32 m-4 bg-light-blue shrink-0">TP</div>
                         <div class="h-32 w-32 m-4 bg-light-blue shrink-0">TP</div>
-                        <div class="select-arrow arrow-right">></div>
+                        <div class="select-arrow arrow-right">&gt;</div>
                     </div>
                     <div class="pyramid-level flex flex-row w-full justify-center shrink-0">
-                        <div class="select-arrow arrow-left"><</div>
+                        <div class="select-arrow arrow-left">&lt;</div>
                         <div class="h-32 w-32 m-4 bg-light-blue shrink-0">TP</div>
                         <div class="h-32 w-32 m-4 bg-light-blue shrink-0">TP</div>
                         <div class="h-32 w-32 m-4 bg-light-blue shrink-0">TP</div>
                         <div class="h-32 w-32 m-4 bg-light-blue shrink-0">TP</div>
-                        <div class="select-arrow arrow-right">></div>
+                        <div class="select-arrow arrow-right">&gt;</div>
                     </div>
                 </div>
             </div>
-            <div class="float-left w-full lg:w-1/3 bg-light-green max-h-full px-5 ">
+            <div class="float-left w-full lg:w-1/3 max-h-full px-5 ">
                 <div class="bg-dark-green p-3 pt-5 detail-inner">
                     <div class="text-3xl text-center">Organism Name</div>
                     <div class="text-base text-left mt-5 px-5">
@@ -113,12 +124,8 @@
                         </ul>
                         <br>
                         <form class="text-center" action="#">
-                            <label for="">1</label>
-                            <input type="range" name="Population Cap" id="">
-                            <label for="">100</label>
-                            <br>
                             <button class="border-solid rounded border-slate-900 border-2 bg-light-blue p-2 m-2">Increase Max Population Cap</button>
-                            <button class="border-solid rounded border-slate-900 border-2 bg-light-blue p-2 m-2">Upgrade</button>
+                            <button class="border-solid rounded border-slate-900 border-2 bg-light-blue p-2 m-2">Upgrade (20.1k O-Points)</button>
                         </form>
                     </div>
                 </div>
