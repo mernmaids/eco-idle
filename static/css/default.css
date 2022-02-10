@@ -34,3 +34,83 @@ body {
 .pyramid {
     min-width: 40em;
 }
+
+@keyframes gradient {
+    0% {
+		background-position: 0% 0%;
+	}
+    100% {
+        background-position: 100% 0%;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+.organism-point-readout {
+    font-weight: bold;
+    display: block;
+    top: 0;
+    margin-left: 90px;
+    margin-top: -138px;
+}
+
+.organism-point-meter {
+    background: linear-gradient(-10deg, #a3ccb4, #338051);
+    animation: gradient 5s ease infinite alternate;
+    background-size: 1000% 400%;
+    border: solid 4px #03120e;
+    width: min-content;
+    white-space: nowrap;
+    border-radius: 60px;
+    margin: auto;
+}
+
+.organism-point-icon {
+    position: relative;
+    margin-top: -11px;
+    width: 80px;
+    height: 80px;
+    stroke-width: 10px;
+}
+
+.icon-arrows {
+    transform-origin: 43.7% 43.7%;
+    animation: spin 1s infinite;
+}
+
+.icon-plant {
+    transform: translateY(-70px);
+}
+
+.detail-inner {
+    border: solid 2px #03120e;
+    border-radius: 20px;
+}
+
+.sidebar {
+    border-right: solid 2px #03120e;
+    border-left: solid 2px #03120e;
+}
+
+.menu-logo {
+    border-bottom: solid 2px #03120e;
+    background-color: #677f70;
+}
+
+.menu-select {
+    border-bottom: solid 2px #03120e;
+    background-color: #677f70;
+    font-weight: normal;
+    transition: 0.25s;
+}
+
+.menu-select:hover {
+    background-color: #338051;
+}
