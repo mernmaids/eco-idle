@@ -2,8 +2,8 @@ import {
   html,
 } from "https://unpkg.com/htm/preact/standalone.module.js";
 
-import { EcoPyramidDetail } from "/src/EcoPyramidDetail.js";
-import { EcoPyramidView } from "/src/EcoPyramidView.js";
+import { EcoPyramidDetail } from "./EcoPyramidDetail.js";
+import { EcoPyramidView } from "./EcoPyramidView.js";
 
 export function EcoPyramid() {
     const selected_data = {

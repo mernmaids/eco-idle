@@ -2,12 +2,12 @@ import {
   html,
 } from "https://unpkg.com/htm/preact/standalone.module.js";
 
-import { Sector } from '/src/Sector.js';
+import { Sector } from './sector/Sector.js';
 
 export function ContentView({ option }) {
   if(option === "sector") {
     return html`<${Sector}/>`;
-  } else if(option === "shroom_shop") {
+  } else if(option === "shroom shop") {
     return html`shroom shop`;
   } else if(option === "prestige" ) {
     return html`prestige`;
