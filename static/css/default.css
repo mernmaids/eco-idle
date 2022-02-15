@@ -24,22 +24,14 @@ body {
 }
 
 .select-arrow {
-    position: relative;
-    top: 338px;
-    bottom: 0;
-    transform: scale(3,5);
-}
-
-.arrow-left {
-    left: 0px;
-}
-
-.arrow-right {
-    right: 0px;
+    top: 25px;
+    width: 100px;
+    height: 100px;
 }
 
 .pyramid {
-    min-width: 40em;
+    margin: auto;
+    min-width: 50em;
 }
 
 @keyframes gradient {
@@ -63,7 +55,6 @@ body {
 .organism-point-readout {
     font-weight: bold;
     display: block;
-    top: 0;
     margin-left: 90px;
     margin-top: -138px;
 }
@@ -135,8 +126,22 @@ body {
     background-color: #677f70;
     font-weight: normal;
     transition: 0.25s;
+    user-select: none;
+    cursor: pointer;
 }
 
 .menu-select:hover {
     background-color: #338051;
+}
+
+.icon {
+    margin: auto;
+    width: 75px;
+    height: 90%;
+    vertical-align: middle;
+}
+
+.icon-outer {
+    border-radius: 75px;
+    border: 4px solid black;
 }

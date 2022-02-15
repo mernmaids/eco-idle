@@ -2,17 +2,12 @@ import {
   html,
 } from "https://unpkg.com/htm/preact/standalone.module.js";
 
-export function EcoPyramidDetail() {
+export function EcoPyramidDetail({orgodata}) {
     const resp = html`
         <div class="bg-dark-green p-3 pt-5 detail-inner">
-            <div class="text-3xl text-center">Organism Name</div>
+            <div class="text-3xl text-center">${orgodata['name']}</div>
             <div class="text-base text-left mt-5 px-5">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>${orgodata['description']}</p>
                 <br/>
                 <ul class="list-disc px-5">
                     <li>Detail One</li>
@@ -28,6 +23,5 @@ export function EcoPyramidDetail() {
             </div>
         </div>
     `;
-    console.log(resp);
     return resp;
 }
