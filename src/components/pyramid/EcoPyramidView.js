@@ -6,7 +6,7 @@ import {
 
 import { EcoPyramidOrganism } from "./EcoPyramidOrganism.js";
 
-export function EcoPyramidView() {
+export function EcoPyramidView({selectedOrganism}) {
     const defaultOrganismData = {
         "tertiary_consumers": {
             "visible" : 1,
@@ -49,7 +49,6 @@ export function EcoPyramidView() {
             orgData[details.category].names.push(orgData[details.category].names.shift());
         }
         return orgData;
-
     }
     const [organismData, shiftRow] = useReducer(executeShift, defaultOrganismData);
 
@@ -59,11 +58,15 @@ export function EcoPyramidView() {
                 return html`
                     <div class="pyramid-level flex flex-row w-full justify-center">
                         <div class="select-arrow arrow-left shrink-0" onClick=${() => shiftRow({'direction':'left', 'category':category})}>
-                            <img src="/static/svg/left.svg"/>
+                            <img class="inner-arrow-left" src="/static/svg/left.svg"/>
                         </div>
-                        ${organismData[category].names.slice(0,organismData[category].visible).map( (organism) => html`<${EcoPyramidOrganism} name=${organism}/>`)}
+                        ${organismData[category].names.slice(0,organismData[category].visible).map( 
+                            (organism) => {
+                                return html`<${EcoPyramidOrganism} name=${organism} onClick=${() => selectedOrganism(organism)}/>`;
+                            }
+                        )}
                         <div class="select-arrow arrow-right shrink-0" onClick=${() => shiftRow({'direction':'right', 'category':category})}>
-                            <img src="/static/svg/right.svg"/>
+                            <img class="inner-arrow-right" src="/static/svg/right.svg"/>
                         </div>
                     </div>
                 `;

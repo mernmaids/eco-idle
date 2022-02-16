@@ -10,7 +10,7 @@ export function PointDisplay({points, unit}) {
         "billion" : "b"
     }
     return html`
-    <div class="w-full text-center text-5xl p-5">
+    <div class="w-full text-center text-5xl p-5 h-1/6">
         <div class="p-5 organism-point-meter" title="Organism Points">
             <${OrganismPointSVG}/>
             <div class="organism-point-readout">${points}${unitAbbreviations[unit]}</div>

@@ -1,24 +1,24 @@
 import {
   html,
+  useState,
 } from "https://unpkg.com/htm/preact/standalone.module.js";
 
 import { EcoPyramidDetail } from "./EcoPyramidDetail.js";
 import { EcoPyramidView } from "./EcoPyramidView.js";
 
 export function EcoPyramid() {
-    const selected_data = {
-        "name" : "Tree Moss",
-        "description" : " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        "details" : [
-        ]
+    const [organism, setOrganism] = useState('moss');
 
-    };
+    function onSelectOrganism(organismName) {
+        setOrganism(organismName);
+    }
+
     return html`
-        <div class="float-left w-full lg:w-2/3 overflow-x-scroll lg:overflow-x-hidden">
-            <${EcoPyramidView}/>
+        <div class="float-left w-full xl:w-2/3 overflow-x-scroll xl:overflow-x-hidden">
+            <${EcoPyramidView} selectedOrganism=${onSelectOrganism}/>
         </div>
-        <div class="float-left w-full lg:w-1/3 max-h-full px-5 ">
-            <${EcoPyramidDetail} orgodata=${selected_data}/>
+        <div class="float-left w-full xl:w-1/3 xl:h-5/6 p-5 xl:py-0 ">
+            <${EcoPyramidDetail} name=${organism}/>
         </div>
     `;
 }

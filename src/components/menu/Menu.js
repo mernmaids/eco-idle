@@ -14,7 +14,7 @@ export function Menu({ onMenuSelect, info }) {
         'settings'
     ];
     return html`
-        <div class="float-left m-0 w-full lg:w-1/6 lg:h-full text-center bg-dark-green sidebar">
+        <div class="float-left m-0 w-full xl:w-1/6 xl:h-full text-center bg-dark-green sidebar">
             <${MenuLogo}/>
             ${options.map( (opt) =>
                 html`<${MenuItem} onClick=${() => onMenuSelect(opt)}>${opt}</${MenuItem}>`
