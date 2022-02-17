@@ -3,6 +3,7 @@ import {
 } from "https://unpkg.com/htm/preact/standalone.module.js";
 
 import { Sector } from './sector/Sector.js';
+import { SettingsMenu } from './settings/SettingsMenu.js';
 
 export function ContentView({ option }) {
   if(option === "sector") {
@@ -14,7 +15,7 @@ export function ContentView({ option }) {
   } else if(option === "enviro shop") {
     return html`enviro shop`;
   } else if(option === "settings") {
-    return html`settings`;
+    return html`<${SettingsMenu}/>`;
   }
 }
 
