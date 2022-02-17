@@ -2,7 +2,7 @@ import {
   html,
 } from "https://unpkg.com/htm/preact/standalone.module.js";
 
-import { EcoPyramid } from '../pyramid/EcoPyramid.js';
+import { EcoPyramid } from './pyramid/EcoPyramid.js';
 import { PointDisplay } from './PointDisplay.js';
 
 export function Sector() {

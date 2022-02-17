@@ -86,7 +86,7 @@ body {
     0% {
         transform: rotate(0deg);
     }
-    100% {
+    20%, 100% {
         transform: rotate(180deg);
     }
 }
@@ -119,7 +119,7 @@ body {
 
 .icon-arrows {
     transform-origin: 43.7% 43.7%;
-    animation: spin 1s infinite;
+    animation: spin 5s infinite;
 }
 
 .icon-plant {
@@ -177,13 +177,85 @@ body {
     margin: auto;
     width: 75px;
     height: 90%;
-    vertical-align: middle;
     user-select: none;
 }
 
 .icon-outer {
     border-radius: 75px;
-    border: 4px solid black;
     cursor: pointer;
-    transition: 0.3s;
+    position: absolute;
+    left: 50%;
+    margin-left: -3.5em;
+    top: 50%;
+    margin-top: -4em;
+    z-index: 500;
+}
+
+.icon-progress {
+    position: absolute;
+    margin: auto;
+    left: 50%;
+    margin-left: -4em;
+    z-index: 50;
+}
+
+.progress-wrapper {
+    position: relative;
+    width: 8rem;
+    height: 8rem;
+    background-color: #677f70;
+    border-radius: 75px;
+    animation-duration: 5s;
+}
+
+.progress {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    background: #14d25d;
+}
+
+.spinner {
+    border-radius: 4rem 0 0 4rem;
+    z-index: 200;
+    border-right: none;
+    animation: rota linear infinite;
+    animation-duration: inherit;
+    transform-origin: 100% 50%;
+}
+
+.filler {
+    border-radius: 0 4rem 4rem 0;
+    z-index: 100;
+    animation: fill steps(1, end) infinite;
+    animation-duration: inherit;
+    left: 50%;
+    opacity: 0;
+}
+
+.progress-mask {
+    border-radius: 4rem 0 0 4rem;
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    z-index: 300;
+    opacity: 1;
+    background: inherit;
+    animation: mask steps(1, end) infinite;
+    animation-duration: inherit;
+}
+
+@keyframes rota {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fill {
+    0% { opacity: 0; }
+    50%, 100% { opacity: 1; }
+}
+
+@keyframes mask {
+    0% { opacity: 1; }
+    50%, 100% { opacity: 0; }
 }

@@ -76,4 +76,3 @@ export function ContentView({ option }) {
     return html`<${SettingsMenu}/>`;
   }
 }
-

@@ -41,7 +41,6 @@ export function EcoPyramidView({selectedOrganism}) {
         },
     };
     function executeShift(oldOrgData, details) {  
-        console.log('shifting');
         let orgData = JSON.parse(JSON.stringify(oldOrgData));
         if(details.direction === 'right') {
             orgData[details.category].names.unshift(orgData[details.category].names.pop());
