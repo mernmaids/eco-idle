@@ -9,6 +9,7 @@ export function Sector() {
     return html`
         <div class="float-left m-0 w-full xl:w-5/6 md:h-full bg-light-green sector-view">
             <${PointDisplay} points="812.3" unit="billion"/>
+            <!-- pyramid for selecting organism detail -->
             <${EcoPyramid}/>
         </div>
     `;

@@ -7,6 +7,7 @@ import {
 import { EcoPyramidOrganism } from "./EcoPyramidOrganism.js";
 
 export function EcoPyramidView({selectedOrganism}) {
+    // "visible" shows how many on each row to render
     const defaultOrganismData = {
         "tertiary_consumers": {
             "visible" : 1,
@@ -40,7 +41,9 @@ export function EcoPyramidView({selectedOrganism}) {
             ]
         },
     };
+    // "shift" the row left or right by moving an element on the end to the other end
     function executeShift(oldOrgData, details) {  
+        // kind of hacky, but we need to deep-copy the organism data
         let orgData = JSON.parse(JSON.stringify(oldOrgData));
         if(details.direction === 'right') {
             orgData[details.category].names.unshift(orgData[details.category].names.pop());
@@ -49,6 +52,7 @@ export function EcoPyramidView({selectedOrganism}) {
         }
         return orgData;
     }
+    // since we're modifying a given value, reducer is appropriate to use here
     const [organismData, shiftRow] = useReducer(executeShift, defaultOrganismData);
 
     return html`
@@ -59,6 +63,7 @@ export function EcoPyramidView({selectedOrganism}) {
                         <div class="select-arrow arrow-left shrink-0" onClick=${() => shiftRow({'direction':'left', 'category':category})}>
                             <img class="inner-arrow-left" src="/static/svg/left.svg"/>
                         </div>
+                        <!-- get the first "visible" organisms and render those -->
                         ${organismData[category].names.slice(0,organismData[category].visible).map( 
                             (organism) => {
                                 return html`<${EcoPyramidOrganism} name=${organism} onClick=${() => selectedOrganism(organism)}/>`;

@@ -8,10 +8,11 @@ import { Menu } from './components/menu/Menu.js';
 import { ContentView } from './components/ContentView.js';
 
 function App() {
-
+  // the selected menu option
   const [view, setView] = useState('sector');
 
   function handleMenuSelect(e) {
+    // only re-render if we selected a different option
     if(view !== setView )
       setView(e);
   }

@@ -11,7 +11,7 @@ export function ShopItem({itemdata}) {
             <p><i>${itemdata.effect.value} to ${itemdata.effect.stat}</i></p>
             <br/>
             <div class="text-center">
-                <button class="bg-light-blue-darken-hover p-3 border-2 border-black">Buy (${itemdata.cost} points)</button>
+                <button class="bg-light-blue-darken-hover p-3 border-2 border-black rounded">Buy (${itemdata.cost} points)</button>
             </div>
         </div>
     `;

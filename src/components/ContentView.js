@@ -8,6 +8,7 @@ import { Shop } from './shop/Shop.js';
 import { Prestige } from './prestige/Prestige.js';
 
 export function ContentView({ option }) {
+  // Define shop data here so we can reuse the Shop component
   const shroomShopData = {
     "name" : "Shroom Shop",
     "items" : [

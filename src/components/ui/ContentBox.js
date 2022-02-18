@@ -2,6 +2,9 @@ import {
   html,
 } from "https://unpkg.com/htm/preact/standalone.module.js";
 
+/*
+Reusable, centered generic content "box".
+*/
 export function ContentBox({children}) {
     return html`
         <div class="float-left m-0 w-full xl:w-5/6 md:h-full bg-light-green flex">
