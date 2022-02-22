@@ -1,0 +1,212 @@
+{
+  "lastSaved": "2022-02-09T05:00:00.000Z",
+  "menuOptions": [
+    "sector",
+    "shroom shop",
+    "prestige",
+    "enviro shop",
+    "settings"
+  ],
+  "saveData": {
+    "organismPoints": {
+      "magnitude": 214.1,
+      "unit": "thousand"
+    },
+    "enviroPoints": 23,
+    "solarCapacity": 100,
+    "currentBiome": "grassland",
+    "enviroShopData": {
+      "name": "Environmental Shop",
+      "items": [
+        {
+          "name": "Upgrade 1",
+          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "effect": {
+            "stat": "statisticOne",
+            "value": "+17%"
+          },
+          "purchased": false
+        },
+        {
+          "name": "Upgrade 2",
+          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "effect": {
+            "stat": "statisticTwo",
+            "value": "+17%"
+          },
+          "purchased": false
+        },
+        {
+          "name": "Upgrade 3",
+          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "effect": {
+            "stat": "statisticThree",
+            "value": "+17%"
+          },
+          "purchased": false
+        }
+      ]
+    },
+    "shroomShopData": {
+      "name" : "Shroom Shop",
+      "items" : [
+        {
+          "cost": 75,
+          "name" : "Decomposer Fungi",
+          "description" : "Decomposes dead organisms, releasing their nutrients back into the environment.",
+          "effect" : {
+            "stat": "organismPointRate",
+            "value": "+10%"
+          },
+          "purchased" : false
+        },
+        {
+          "cost": 25,
+          "name" : "Mycorrhizal Fungi",
+          "description" : "Colonizes plant tissue and root systems, improving growth.",
+          "effect" : {
+            "stat": "producerGrowthRate",
+            "value": "+15%"
+          },
+          "purchased" : false
+        },
+        {
+          "cost": 10,
+          "name" : "Edible Fungi",
+          "description" : "Acts as additional food source, feeding herbivorous creatures.",
+          "effect" : {
+            "stat": "primaryConsumerGrowthRate",
+            "value": "+5%"
+          },
+          "purchased" : false
+        },
+        {
+          "cost": 15,
+          "name" : "Edible Fungi 2",
+          "description" : "Acts as additional food source, feeding herbivorous creatures.",
+          "effect" : {
+            "stat": "primaryConsumerGrowthRate",
+            "value": "+5%"
+          },
+          "purchased" : false
+        },
+        {
+          "cost": 20,
+          "name" : "Edible Fungi 3",
+          "description" : "Acts as additional food source, feeding herbivorous creatures.",
+          "effect" : {
+            "stat": "primaryConsumerGrowthRate",
+            "value": "+5%"
+          },
+          "purchased" : false
+        }
+      ]
+    },
+    "organisms": {
+      "grassland": {
+        "tiger": {
+          "name": "tiger",
+          "nOwned": 13,
+          "upgrade1Unlocked": true,
+          "upgrade2Unlocked": false,
+          "category": "tertiary_consumer",
+          "delay": 6
+        },
+        "snake": {
+          "name": "snake",
+          "nOwned": 2,
+          "upgrade1Unlocked": false,
+          "upgrade2Unlocked": false,
+          "category": "secondary_consumer",
+          "delay": 3
+
+        },
+        "husky": {
+          "name": "husky",
+          "nOwned": 0,
+          "upgrade1Unlocked": false,
+          "upgrade2Unlocked": false,
+          "category": "secondary_consumer",
+          "delay": 3
+
+        },
+        "elk": {
+          "name": "elk",
+          "nOwned": 0,
+          "upgrade1Unlocked": false,
+          "upgrade2Unlocked": false,
+          "category": "primary_consumer",
+          "delay": 1.5
+
+        },
+        "rabbit": {
+          "name": "rabbit",
+          "nOwned": 13,
+          "upgrade1Unlocked": true,
+          "upgrade2Unlocked": false,
+          "category": "primary_consumer",
+          "delay": 1.5
+
+        },
+        "mouse": {
+          "name": "mouse",
+          "nOwned": 2,
+          "upgrade1Unlocked": false,
+          "upgrade2Unlocked": false,
+          "category": "primary_consumer",
+          "delay": 1.5
+
+        },
+        "grass": {
+          "name": "grass",
+          "nOwned": 0,
+          "upgrade1Unlocked": false,
+          "upgrade2Unlocked": false,
+          "category": "producer",
+          "delay": 0.25
+
+        },
+        "tree": {
+          "name": "tree",
+          "nOwned": 0,
+          "upgrade1Unlocked": false,
+          "upgrade2Unlocked": false,
+          "category": "producer",
+          "delay": 1
+
+        },
+        "bush": {
+          "name": "bush",
+          "nOwned": 0,
+          "upgrade1Unlocked": false,
+          "upgrade2Unlocked": false,
+          "category": "producer",
+          "delay": 0.5
+
+        },
+        "flower": {
+          "name": "flower",
+          "nOwned": 0,
+          "upgrade1Unlocked": false,
+          "upgrade2Unlocked": false,
+          "category": "producer",
+          "delay": 0.3
+
+        },
+        "flower2": {
+          "name": "flower",
+          "nOwned": 0,
+          "upgrade1Unlocked": false,
+          "upgrade2Unlocked": false,
+          "category": "producer",
+          "delay": 0.3
+
+        }
+      },
+      "desert": {},
+      "aquatic": {},
+      "tundra": {},
+      "forest": {}
+    }
+  }
+}
