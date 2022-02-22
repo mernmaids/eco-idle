@@ -1,12 +1,9 @@
-import {
-  html,
-  useReducer,
-  useEffect
-} from "https://unpkg.com/htm/preact/standalone.module.js";
+import { useReducer } from "react";
 
 import { EcoPyramidOrganism } from "./EcoPyramidOrganism.js";
 
 export function EcoPyramidView({ organisms, selectedOrganism }) {
+    // since we're modifying a given value, reducer is appropriate to use here
     // set up our categories
     const defaultDisplayData = {
         "tertiary_consumer": [],
@@ -14,10 +11,12 @@ export function EcoPyramidView({ organisms, selectedOrganism }) {
         "primary_consumer": [],
         "producer" : [],
     };
-    for(let name of Object.keys(organisms)) {
-        let organism = organisms[name];
-        defaultDisplayData[organism.category].push(organism.name);
+    for(let organism of organisms) {
+        defaultDisplayData[organism.get("category")].push(organism.get("name"));
     }
+
+    const [displayData, shiftRow] = useReducer(executeShift, defaultDisplayData);
+
     // "shift" the row left or right by moving an element on the end to the other end
     function executeShift(displayData, details) {  
         // kind of hacky, but we need to deep-copy the organism data
@@ -29,8 +28,6 @@ export function EcoPyramidView({ organisms, selectedOrganism }) {
         }       
         return orgData;
     }
-    // since we're modifying a given value, reducer is appropriate to use here
-    const [displayData, shiftRow] = useReducer(executeShift, defaultDisplayData);
     // "visible" shows how many on each row to render
     const visible = {
         "producer": 4,
@@ -39,31 +36,33 @@ export function EcoPyramidView({ organisms, selectedOrganism }) {
         "tertiary_consumer": 1,
     }
 
-    return html`
-        <div class="flex flex-col text-center items-center overflow-y-hidden overflow-x-hidden pyramid">
-            ${Object.keys(displayData).map( (category) => {
-                return html`
-                    <div class="pyramid-level flex flex-row w-full justify-center">
-                        <div class="select-arrow arrow-left shrink-0" onClick=${() => shiftRow({'direction':'left', 'category':category})}>
-                            <img class="inner-arrow-left" src="/static/svg/left.svg"/>
+    return (
+        <div className="flex flex-col text-center items-center overflow-y-hidden overflow-x-hidden pyramid">
+            {Object.keys(displayData).map( (category) => {
+                return (
+                    <div key={category} className="pyramid-level flex flex-row w-full justify-center">
+                        <div key="left" className="select-arrow arrow-left shrink-0" onClick={() => shiftRow({'direction':'left', 'category':category})}>
+                            <img alt="arrow to scroll visible organisms left" className="inner-arrow-left" src="/svg/left.svg"/>
                         </div>
-                        <!-- get the first "visible" organisms and render those -->
-                        ${displayData[category].slice(0,visible[category]).map( 
+                        {/* get the first "visible" organisms and render those */}
+                        {displayData[category].slice(0,visible[category]).map( 
                             (organismName) => {
-                                return html`
-                                    <${EcoPyramidOrganism} 
-                                        name=${organismName} 
-                                        onClick=${() => selectedOrganism(organismName)}
-                                        delay=${organisms[organismName].delay}
-                                    />`;
+                                const org = organisms.find(o => o.get("name") === organismName);
+                                return (
+                                    <EcoPyramidOrganism 
+                                        key={org.get("name")}
+                                        name={org.get("name")} 
+                                        onClick={() => selectedOrganism(org.get("name"))}
+                                        delay={org.get("delay")}
+                                    />);
                             }
                         )}
-                        <div class="select-arrow arrow-right shrink-0" onClick=${() => shiftRow({'direction':'right', 'category':category})}>
-                            <img class="inner-arrow-right" src="/static/svg/right.svg"/>
+                        <div key="right" className="select-arrow arrow-right shrink-0" onClick={() => shiftRow({'direction':'right', 'category':category})}>
+                            <img alt="arrow to scroll visible organisms right" className="inner-arrow-right" src="/svg/right.svg"/>
                         </div>
                     </div>
-                `;
+                );
             })}
         </div>
-    `;
+    );
 }

@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body { 
+    font-family: 'Varela Round', sans-serif;
+    color: #03120e;
+    background-color: #677f70;
+}
+
+.main {
+    height: 100vh;
+}
+
+.sector-view {
+    /* background-color: rgba(103,127,112,0.1); */
+    background-image: linear-gradient(rgba(163, 204, 180, 0.4), rgba(163,204,180,0.5), rgba(163,204,180,0.7)), url('/public/img/wallpaper.jpg');
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
+.dark-green-bg,.bg-dark-green {
+    background-color: #677f70;
+}
+
+.light-green-bg,.bg-light-green {
+    background-color: #a3ccb4;
+}
+
+.bg-light-blue {
+    background-color: #b4cded;
+}
+
+.bg-light-blue-darken-hover {
+    background-color: #b4cded;
+    transition: 0.3s;
+}
+.bg-light-blue-darken-hover:hover {
+    background-color: #267ced;
+}
+
+.select-arrow {
+    direction: ltr;
+    padding-top: 25px;
+    width: 100px;
+    height: 100px;
+    user-select: none;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.25s;
+}
+
+ .arrow-left:hover > .inner-arrow-left {
+     animation: slide-left 0.25s infinite alternate ease-out;
+}
+ .arrow-right:hover > .inner-arrow-right {
+     animation: slide-right 0.25s infinite alternate ease-out;
+}
+
+.pyramid {
+    margin: auto;
+    min-width: 50em;
+}
+
+@keyframes slide-left {
+    0% {
+        transform: translateX(0px);
+    }
+    100% {
+        transform: translateX(-10px);
+    }
+}
+
+@keyframes slide-right {
+    0% {
+        transform: translateX(0px);
+    }
+    100% {
+        transform: translateX(10px);
+    }
+}
+
+@keyframes gradient {
+    0% {
+		background-position: 0% 0%;
+	}
+    100% {
+        background-position: 100% 0%;
+    }
+}
+
+.detail-inner {
+    border: solid 2px #03120e;
+    border-radius: 20px;
+}
+
+.sidebar {
+    border-right: solid 2px #03120e;
+    border-left: solid 2px #03120e;
+}
+
+.menu-logo {
+    border-bottom: solid 2px #03120e;
+    background-color: #677f70;
+}
+
+.menu-logo-o {
+    fill: #03120e;
+    position: relative;
+    width: 27px;
+    height: 27px;
+    top: 10.5px;
+    right: 19px;
+    margin: auto;
+}
+
+.invis-text {
+    color: #677f70;
+}
+
+.menu-logo-text {
+    user-select: none;
+    margin-top: -30px;
+}
+
+.menu-select {
+    border-bottom: solid 2px #03120e;
+    background-color: #677f70;
+    font-weight: normal;
+    transition: 0.25s;
+    user-select: none;
+    cursor: pointer;
+}
+
+.menu-select:hover {
+    background-color: #338051;
+}
+
+.icon {
+    margin: auto;
+    width: 75px;
+    height: 90%;
+    user-select: none;
+}

@@ -1,23 +1,37 @@
+
 import {
-  html,
-} from "https://unpkg.com/htm/preact/standalone.module.js";
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 
 import { Sector } from './sector/Sector.js';
 import { SettingsMenu } from './settings/SettingsMenu.js';
 import { Shop } from './shop/Shop.js';
 import { Prestige } from './prestige/Prestige.js';
 
-export function ContentView({ data, view }) {
+export function ContentView({ saveData, organisms, shroomShopItems, enviroShopItems }) {
   // choose which view to render based on the selected option
-  if(view === "sector") {
-    return html`<${Sector} savedata=${data.saveData}/>`;
-  } else if(view === "shroom shop") {
-    return html`<${Shop} shopdata=${data.saveData.shroomShopData}/>`;
-  } else if(view === "prestige" ) {
-    return html`<${Prestige}/>`;
-  } else if(view === "enviro shop") {
-    return html`<${Shop} shopdata=${data.saveData.enviroShopData}/>`;
-  } else if(view === "settings") {
-    return html`<${SettingsMenu}/>`;
-  }
+  return (
+    <Switch>
+      <Route exact path="/sector">
+        <Sector savedata={saveData} organisms={organisms}/>
+      </Route>
+      <Route exact path="/shrooms">
+        <Shop shopName="Shroom Shop" shopdata={shroomShopItems}/>
+      </Route>
+      <Route exact path="/prestige">
+        <Prestige/>
+      </Route>
+      <Route exact path="/enviro">
+        <Shop shopName="Enviro Shop" shopdata={enviroShopItems}/>
+      </Route>
+      <Route exact path="/settings">
+        <SettingsMenu/>
+      </Route>
+      <Route exact path="/">
+        <Redirect to="/sector"/>
+      </Route>
+    </Switch>
+  );
 }
