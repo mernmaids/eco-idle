@@ -5,3 +5,5 @@ export function getData() {
       return response.data;
     });
   }
+
+// TODO: use MongoDB instead of single JSON file

@@ -17,6 +17,7 @@ function App() {
     });
 
   // Uses header and body components
+  // TODO: integrate with frontend components
   return html`
       <${Header} sector="${data.saveData.currentSector}" oPoints="${data.saveData.organismPoints}"></${Header}>
       <${Body} sector="${data.saveData.currentSector}" organisms="${data.saveData.organisms}"></${Body}>

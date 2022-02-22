@@ -3,6 +3,7 @@ import {
 } from "https://unpkg.com/htm/preact/standalone.module.js";
 
 // prints list of organisms
+// TODO: merge with frontend to make it look nice
 export function Body({ sector, organisms, children }) {
     console.log(organisms[sector]);
     console.log(sector);
