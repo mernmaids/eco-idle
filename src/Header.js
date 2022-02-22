@@ -2,6 +2,7 @@ import {
     html
   } from "https://unpkg.com/htm/preact/standalone.module.js";
 
+  // returns the header html
   export function Header({ sector, oPoints, children }) {
       return html`
         <header>
