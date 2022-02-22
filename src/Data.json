@@ -1,0 +1,46 @@
+{
+    "lastSaved": "2022-02-09T05:00:00.000Z",
+    "saveData": {
+      "organismPoints": 1000,
+      "enviroPoints": 23,
+      "solarCapacity": 100,
+      "currentSector": "grassland",
+      "enviroUpgrades": {
+        "upgrade1Unlocked": false,
+        "upgrade2Unlocked": false,
+        "upgrade3Unlocked": false
+      },
+      "organisms": {
+        "grassland": {
+          "grass1": {
+            "name": "grass1",
+            "nOwned": 13,
+            "upgrade1Unlocked": true,
+            "upgrade2Unlocked": false
+          },
+          "fern1": {
+            "name": "fern1",
+            "nOwned": 2,
+            "upgrade1Unlocked": false,
+            "upgrade2Unlocked": false
+          },
+          "grass2": {
+            "name": "grass2",
+            "nOwned": 0,
+            "upgrade1Unlocked": false,
+            "upgrade2Unlocked": false
+          },
+          "tree1": {
+            "name": "tree1",
+            "nOwned": 0,
+            "upgrade1Unlocked": false,
+            "upgrade2Unlocked": false
+          }
+        },
+        "desert": {},
+        "aquatic": {},
+        "tundra": {},
+        "forest": {}
+      }
+    }
+  }

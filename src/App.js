@@ -1,11 +1,24 @@
 import {
   html,
   render,
+  useState,
+  useEffect
 } from "https://unpkg.com/htm/preact/standalone.module.js";
+import { Body } from "./Body.js";
+import { getData } from "./Api.js";
+import { Header } from "./Header.js";
+
 
 function App() {
+  const [data, setData] = useState([]);
+    getData().then((d) => {
+      console.log(d);
+      setData(d);
+    });
+
   return html`
-      An example Preact starter without webpack.
+      <${Header} sector="${data.saveData.currentSector}" oPoints="${data.saveData.organismPoints}"></${Header}>
+      <${Body} sector="${data.saveData.currentSector}" organisms="${data.saveData.organisms}"></${Body}>
   `;
 }
 
