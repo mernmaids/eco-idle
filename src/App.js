@@ -18,12 +18,20 @@ function App() {
             setView(selection);
         }
     }
-    getData().then((d) => {
-        setData(d);
-    });
+
+    // only gets save data at first render
+    useEffect(() => {
+        getData().then((d) => {
+            setData(d);
+        });
+    }, []);
+
+    // if data is still loading
     if(!data) {
         return html`<div>Loading...</div>`;
     }
+
+    // if data is loaded
     return html`
         <div class="h-screen">
             <${Menu} onMenuSelect=${handleMenuSelect} options=${data.menuOptions}/>

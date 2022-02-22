@@ -1,7 +1,6 @@
 import {
   html,
-  useReducer,
-  useEffect
+  useReducer
 } from "https://unpkg.com/htm/preact/standalone.module.js";
 
 import { EcoPyramidOrganism } from "./EcoPyramidOrganism.js";

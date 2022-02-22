@@ -1,6 +1,5 @@
 import {
   html,
-  useEffect,
 } from "https://unpkg.com/htm/preact/standalone.module.js";
 
 import { MenuItem } from "./MenuItem.js";
