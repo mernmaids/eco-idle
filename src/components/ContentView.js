@@ -20,7 +20,8 @@ export function ContentView({ option }) {
         "effect" : {
           "stat": "organismPointRate",
           "value": "+10%"
-        }
+        },
+        "purchased" : false
       },
       {
         "id" : 2,
@@ -30,7 +31,8 @@ export function ContentView({ option }) {
         "effect" : {
           "stat": "producerGrowthRate",
           "value": "+15%"
-        }
+        },
+        "purchased" : false
       },
       {
         "id" : 3,
@@ -40,7 +42,8 @@ export function ContentView({ option }) {
         "effect" : {
           "stat": "primaryConsumerGrowthRate",
           "value": "+5%"
-        }
+        },
+        "purchased" : false
       },
       {
         "id" : 4,
@@ -50,7 +53,8 @@ export function ContentView({ option }) {
         "effect" : {
           "stat": "primaryConsumerGrowthRate",
           "value": "+5%"
-        }
+        },
+        "purchased" : false
       },
       {
         "id" : 5,
@@ -60,11 +64,13 @@ export function ContentView({ option }) {
         "effect" : {
           "stat": "primaryConsumerGrowthRate",
           "value": "+5%"
-        }
+        },
+        "purchased" : false
       }
     ]
   };
   const enviroShopData = {};
+  // choose which view to render based on the selected option
   if(option === "sector") {
     return html`<${Sector}/>`;
   } else if(option === "shroom shop") {

@@ -3,6 +3,8 @@ import {
 } from "https://unpkg.com/htm/preact/standalone.module.js";
 
 export function MenuLogo() {
+    // do a little trickery here to replace the "o" in "eco idle" 
+    // with an SVG leaf symbol
     return html`
         <div class="text-5xl py-3 menu-logo">
             <svg class="menu-logo-o" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

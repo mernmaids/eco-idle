@@ -7,6 +7,10 @@ import {
 import { EcoPyramidOrganism } from "./EcoPyramidOrganism.js";
 
 export function EcoPyramidView({selectedOrganism}) {
+    function loadOrgoData() {
+        // sort by category for displaying
+
+    }
     // "visible" shows how many on each row to render
     const defaultOrganismData = {
         "tertiary_consumers": {

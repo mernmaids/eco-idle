@@ -6,6 +6,7 @@ import { MenuItem } from "./MenuItem.js";
 import { MenuLogo } from "./MenuLogo.js";
 
 export function Menu({ onMenuSelect, info }) {
+    // menu options
     const options = [
         'sector',
         'shroom shop',
@@ -13,6 +14,7 @@ export function Menu({ onMenuSelect, info }) {
         'enviro shop',
         'settings'
     ];
+    // programmatically render all the menu options
     return html`
         <div class="float-left m-0 w-full xl:w-1/6 xl:h-full text-center bg-dark-green sidebar">
             <${MenuLogo}/>
