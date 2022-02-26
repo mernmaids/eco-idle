@@ -1,9 +1,6 @@
-import {
-  html,
-} from "https://unpkg.com/htm/preact/standalone.module.js";
-
 export function OrganismPointSVG() {
-    return html`
+    return (
+        <>
         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
         viewBox="-50 -50 700 700" xml:space="preserve" class="organism-point-icon icon-arrows">
             <path stroke="black" d="M17.067,256C17.067,124.254,124.245,17.067,256,17.067c73.958,0,143.164,34.825,188.22,93.867h-51.686
@@ -41,5 +38,6 @@ export function OrganismPointSVG() {
                 c-24.209-24.218-23.108-61.517-23.083-62.234v-34.091l35.61-0.017c6.289,0,38.733,1.109,60.689,23.074
                 C248.542,183.825,247.509,221.133,247.492,221.824z"/>
         </svg>
-    `;
+        </>
+    );
 }

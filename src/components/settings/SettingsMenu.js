@@ -1,12 +1,8 @@
-import {
-  html,
-} from "https://unpkg.com/htm/preact/standalone.module.js";
-
 import { ContentBox } from "../ui/ContentBox.js";
 
 export function SettingsMenu() {
-    return html`
-        <${ContentBox}>
+    return (
+        <ContentBox>
             <h1 class="text-center text-5xl mb-5">settings</h1>
             <form action="#">
                 <input class="ml-3" type="checkbox" name="offline-progress"/>
@@ -32,6 +28,6 @@ export function SettingsMenu() {
                     Save Settings
                 </button>
             </form>
-        </${ContentBox}>
-    `;
+        </ContentBox>
+    );
 }

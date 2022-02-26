@@ -1,11 +1,7 @@
-import {
-  html,
-} from "https://unpkg.com/htm/preact/standalone.module.js";
-
 export function EcoPyramidDetail({name}) {
-    const resp = html`
+    const resp = (
         <div class="bg-dark-green p-3 pt-5 detail-inner">
-            <div class="text-3xl text-center">${name}</div>
+            <div class="text-3xl text-center">{name}</div>
             <div class="text-base text-left mt-5 px-5">
                 <div class="orgo-description">
                     <p>
@@ -31,6 +27,6 @@ export function EcoPyramidDetail({name}) {
                 </form>
             </div>
         </div>
-    `;
+    );
     return resp;
 }

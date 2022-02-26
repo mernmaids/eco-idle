@@ -1,8 +1,3 @@
-import {
-  html,
-  useReducer
-} from "https://unpkg.com/htm/preact/standalone.module.js";
-
 import { EcoPyramidOrganism } from "./EcoPyramidOrganism.js";
 
 export function EcoPyramidView({ organisms, selectedOrganism }) {
@@ -38,31 +33,31 @@ export function EcoPyramidView({ organisms, selectedOrganism }) {
         "tertiary_consumer": 1,
     }
 
-    return html`
+    return (
         <div class="flex flex-col text-center items-center overflow-y-hidden overflow-x-hidden pyramid">
-            ${Object.keys(displayData).map( (category) => {
-                return html`
+            {Object.keys(displayData).map( (category) => {
+                return (
                     <div class="pyramid-level flex flex-row w-full justify-center">
-                        <div class="select-arrow arrow-left shrink-0" onClick=${() => shiftRow({'direction':'left', 'category':category})}>
+                        <div class="select-arrow arrow-left shrink-0" onClick={() => shiftRow({'direction':'left', 'category':category})}>
                             <img class="inner-arrow-left" src="/static/svg/left.svg"/>
                         </div>
                         <!-- get the first "visible" organisms and render those -->
-                        ${displayData[category].slice(0,visible[category]).map( 
+                        {displayData[category].slice(0,visible[category]).map( 
                             (organismName) => {
-                                return html`
-                                    <${EcoPyramidOrganism} 
-                                        name=${organismName} 
-                                        onClick=${() => selectedOrganism(organismName)}
-                                        delay=${organisms[organismName].delay}
-                                    />`;
+                                return (
+                                    <EcoPyramidOrganism 
+                                        name={organismName} 
+                                        onClick={() => selectedOrganism(organismName)}
+                                        delay={organisms[organismName].delay}
+                                    />);
                             }
                         )}
-                        <div class="select-arrow arrow-right shrink-0" onClick=${() => shiftRow({'direction':'right', 'category':category})}>
+                        <div class="select-arrow arrow-right shrink-0" onClick={() => shiftRow({'direction':'right', 'category':category})}>
                             <img class="inner-arrow-right" src="/static/svg/right.svg"/>
                         </div>
                     </div>
-                `;
+                );
             })}
         </div>
-    `;
+    );
 }
