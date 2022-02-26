@@ -13,10 +13,6 @@ export function EcoPyramidView({ organisms, selectedOrganism }) {
     };
     const [displayData, shiftRow] = useReducer(executeShift, defaultDisplayData);
 
-    if(!organisms) {
-        return (<p>Loading...</p>);
-    }
-
     for(let name of Object.keys(organisms)) {
         let organism = organisms[name];
         defaultDisplayData[organism.category].push(organism.name);
@@ -45,22 +41,24 @@ export function EcoPyramidView({ organisms, selectedOrganism }) {
             {Object.keys(displayData).map( (category) => {
                 return (
                     <div className="pyramid-level flex flex-row w-full justify-center">
-                        <div className="select-arrow arrow-left shrink-0" onClick={() => shiftRow({'direction':'left', 'category':category})}>
-                            <img alt="arrow to scroll visible organisms left" className="inner-arrow-left" src="/static/svg/left.svg"/>
+                        <div key="left" className="select-arrow arrow-left shrink-0" onClick={() => shiftRow({'direction':'left', 'category':category})}>
+                            <img alt="arrow to scroll visible organisms left" className="inner-arrow-left" src="/svg/left.svg"/>
                         </div>
                         {/* get the first "visible" organisms and render those */}
                         {displayData[category].slice(0,visible[category]).map( 
                             (organismName) => {
+                                const org = organisms.find(o => o.name === organismName);
                                 return (
                                     <EcoPyramidOrganism 
-                                        name={organismName} 
-                                        onClick={() => selectedOrganism(organismName)}
-                                        delay={organisms[organismName].delay}
+                                        key={org.name}
+                                        name={org.name} 
+                                        onClick={() => selectedOrganism(org.name)}
+                                        delay={org.delay}
                                     />);
                             }
                         )}
-                        <div className="select-arrow arrow-right shrink-0" onClick={() => shiftRow({'direction':'right', 'category':category})}>
-                            <img alt="arrow to scroll visible organisms right" className="inner-arrow-right" src="/static/svg/right.svg"/>
+                        <div key="right" className="select-arrow arrow-right shrink-0" onClick={() => shiftRow({'direction':'right', 'category':category})}>
+                            <img alt="arrow to scroll visible organisms right" className="inner-arrow-right" src="/svg/right.svg"/>
                         </div>
                     </div>
                 );

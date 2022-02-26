@@ -47,7 +47,6 @@ export async function getData() {
   let tempOrganismData = await query5.find();
   data['saveData']['organisms']['grassland'] = tempOrganismData.map(query => query['attributes']);
 
-  console.log("hi");
   console.log(data);
   return data;
 

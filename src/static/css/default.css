@@ -8,6 +8,10 @@ body {
     background-color: #a3ccb4;
 }
 
+.main {
+    height: 100vh;
+}
+
 .sector-view {
     /* background-color: rgba(103,127,112,0.1); */
     background-image: linear-gradient(rgba(163, 204, 180, 0.4), rgba(163,204,180,0.5), rgba(163,204,180,0.7)), url('../img/wallpaper.jpg');

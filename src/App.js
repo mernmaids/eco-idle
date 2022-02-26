@@ -28,9 +28,10 @@ function App() {
     if(!data) {
         return (<div>Loading...</div>);
     }
+    console.log(data);
 
     return (
-        <div className="h-screen">
+        <div className="h-screen main">
                 <Menu onMenuSelect={handleMenuSelect} options={data.menuOptions}/>
                 <ContentView data={data} view={view}/>
         </div>
