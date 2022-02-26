@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body { 
     font-family: 'Varela Round', sans-serif;
     color: #03120e;
@@ -6,7 +10,7 @@ body {
 
 .sector-view {
     /* background-color: rgba(103,127,112,0.1); */
-    background-image: linear-gradient(rgba(163, 204, 180, 0.4), rgba(163,204,180,0.5), rgba(163,204,180,0.7)), url('/static/img/wallpaper.jpg');
+    background-image: linear-gradient(rgba(163, 204, 180, 0.4), rgba(163,204,180,0.5), rgba(163,204,180,0.7)), url('../img/wallpaper.jpg');
     background-position: 50% 50%;
     background-size: cover;
 }

@@ -1,4 +1,4 @@
-import './App.css';
+import './static/css/default.css';
 import { Menu } from './components/menu/Menu';
 import { ContentView } from './components/ContentView.js';
 import { useEffect, useState } from 'react';

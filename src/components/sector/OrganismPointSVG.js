@@ -1,8 +1,8 @@
 export function OrganismPointSVG() {
     return (
         <>
-        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-        viewBox="-50 -50 700 700" xml:space="preserve" class="organism-point-icon icon-arrows">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="-50 -50 700 700" xmlSpace="preserve" className="organism-point-icon icon-arrows">
             <path stroke="black" d="M17.067,256C17.067,124.254,124.245,17.067,256,17.067c73.958,0,143.164,34.825,188.22,93.867h-51.686
                 c-4.719,0-8.533,3.823-8.533,8.533s3.814,8.533,8.533,8.533H460.8c0.264,0,0.495-0.128,0.751-0.154
                 c0.563-0.043,1.109-0.171,1.655-0.333c0.58-0.171,1.092-0.375,1.613-0.649c0.222-0.119,0.478-0.137,0.7-0.29
@@ -20,8 +20,8 @@ export function OrganismPointSVG() {
                 c0,4.71,3.823,8.533,8.533,8.533s8.533-3.823,8.533-8.533v-42.522C108.058,477.346,179.635,512,256,512
                 c141.158,0,256-114.842,256-256C512,228.335,507.605,201.122,498.961,175.13z"/>
         </svg>
-        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-        viewBox="-50 -50 700 700" xml:space="preserve" class="organism-point-icon icon-plant">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="-50 -50 700 700" xmlSpace="preserve" className="organism-point-icon icon-plant">
             <path stroke="black" d="M282.266,336.137c0.06,0.137,0.179,0.23,0.239,0.367c0.41,0.836,0.879,1.664,1.579,2.364
                 c0.649,0.649,1.417,1.058,2.193,1.459c0.196,0.102,0.341,0.273,0.546,0.358c1.05,0.444,2.167,0.683,3.294,0.683
                 c0.026,0,0.043-0.017,0.068-0.017h42.231l1.801,0.026c7.475,0,46.089-1.357,72.858-28.126c29.619-29.611,28.169-72.823,28.1-74.3

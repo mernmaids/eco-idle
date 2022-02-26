@@ -1,6 +1,9 @@
+import { useReducer } from "react";
+
 import { EcoPyramidOrganism } from "./EcoPyramidOrganism.js";
 
 export function EcoPyramidView({ organisms, selectedOrganism }) {
+    // since we're modifying a given value, reducer is appropriate to use here
     // set up our categories
     const defaultDisplayData = {
         "tertiary_consumer": [],
@@ -8,6 +11,12 @@ export function EcoPyramidView({ organisms, selectedOrganism }) {
         "primary_consumer": [],
         "producer" : [],
     };
+    const [displayData, shiftRow] = useReducer(executeShift, defaultDisplayData);
+
+    if(!organisms) {
+        return (<p>Loading...</p>);
+    }
+
     for(let name of Object.keys(organisms)) {
         let organism = organisms[name];
         defaultDisplayData[organism.category].push(organism.name);
@@ -23,8 +32,6 @@ export function EcoPyramidView({ organisms, selectedOrganism }) {
         }       
         return orgData;
     }
-    // since we're modifying a given value, reducer is appropriate to use here
-    const [displayData, shiftRow] = useReducer(executeShift, defaultDisplayData);
     // "visible" shows how many on each row to render
     const visible = {
         "producer": 4,
@@ -34,14 +41,14 @@ export function EcoPyramidView({ organisms, selectedOrganism }) {
     }
 
     return (
-        <div class="flex flex-col text-center items-center overflow-y-hidden overflow-x-hidden pyramid">
+        <div className="flex flex-col text-center items-center overflow-y-hidden overflow-x-hidden pyramid">
             {Object.keys(displayData).map( (category) => {
                 return (
-                    <div class="pyramid-level flex flex-row w-full justify-center">
-                        <div class="select-arrow arrow-left shrink-0" onClick={() => shiftRow({'direction':'left', 'category':category})}>
-                            <img class="inner-arrow-left" src="/static/svg/left.svg"/>
+                    <div className="pyramid-level flex flex-row w-full justify-center">
+                        <div className="select-arrow arrow-left shrink-0" onClick={() => shiftRow({'direction':'left', 'category':category})}>
+                            <img alt="arrow to scroll visible organisms left" className="inner-arrow-left" src="/static/svg/left.svg"/>
                         </div>
-                        <!-- get the first "visible" organisms and render those -->
+                        {/* get the first "visible" organisms and render those */}
                         {displayData[category].slice(0,visible[category]).map( 
                             (organismName) => {
                                 return (
@@ -52,8 +59,8 @@ export function EcoPyramidView({ organisms, selectedOrganism }) {
                                     />);
                             }
                         )}
-                        <div class="select-arrow arrow-right shrink-0" onClick={() => shiftRow({'direction':'right', 'category':category})}>
-                            <img class="inner-arrow-right" src="/static/svg/right.svg"/>
+                        <div className="select-arrow arrow-right shrink-0" onClick={() => shiftRow({'direction':'right', 'category':category})}>
+                            <img alt="arrow to scroll visible organisms right" className="inner-arrow-right" src="/static/svg/right.svg"/>
                         </div>
                     </div>
                 );
