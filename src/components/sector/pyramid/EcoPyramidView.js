@@ -11,12 +11,13 @@ export function EcoPyramidView({ organisms, selectedOrganism }) {
         "primary_consumer": [],
         "producer" : [],
     };
-    const [displayData, shiftRow] = useReducer(executeShift, defaultDisplayData);
-
     for(let name of Object.keys(organisms)) {
         let organism = organisms[name];
         defaultDisplayData[organism.category].push(organism.name);
     }
+
+    const [displayData, shiftRow] = useReducer(executeShift, defaultDisplayData);
+
     // "shift" the row left or right by moving an element on the end to the other end
     function executeShift(displayData, details) {  
         // kind of hacky, but we need to deep-copy the organism data
@@ -40,7 +41,7 @@ export function EcoPyramidView({ organisms, selectedOrganism }) {
         <div className="flex flex-col text-center items-center overflow-y-hidden overflow-x-hidden pyramid">
             {Object.keys(displayData).map( (category) => {
                 return (
-                    <div className="pyramid-level flex flex-row w-full justify-center">
+                    <div key={category} className="pyramid-level flex flex-row w-full justify-center">
                         <div key="left" className="select-arrow arrow-left shrink-0" onClick={() => shiftRow({'direction':'left', 'category':category})}>
                             <img alt="arrow to scroll visible organisms left" className="inner-arrow-left" src="/svg/left.svg"/>
                         </div>

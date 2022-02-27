@@ -1,0 +1,51 @@
+/*
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    20%, 100% {
+        transform: rotate(180deg);
+    }
+}
+
+.organism-point-readout {
+    font-weight: bold;
+    display: block;
+    margin-left: 90px;
+    margin-top: -138px;
+}
+
+.organism-point-meter {
+    background: linear-gradient(-10deg, #a3ccb4, #338051);
+    animation: gradient 3s ease infinite alternate;
+    background-size: 1000% 400%;
+    border: solid 4px #03120e;
+    width: min-content;
+    white-space: nowrap;
+    border-radius: 60px;
+    margin: auto;
+}
+
+.organism-point-icon-wrapper {
+    margin: auto;
+    width: 130px;
+    height: 130px;
+}
+
+.organism-point-icon {
+    position: relative;
+    margin-top: -12px;
+    width: 150px;
+    height: 150px;
+    stroke-width: 10px;
+}
+
+.icon-arrows {
+    transform-origin: 43.7% 43.7%;
+    animation: spin 1s infinite;
+}
+
+.icon-plant {
+    transform: translateY(-140px);
+}
+*/

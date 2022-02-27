@@ -11,13 +11,13 @@ export function EcoPyramid({ organisms }) {
     }
 
     return (
-        <>
+        <div>
             <div className="float-left w-full xl:w-2/3 overflow-x-scroll md:overflow-x-hidden">
                 <EcoPyramidView organisms={organisms} selectedOrganism={onSelectOrganism}/>
             </div>
             <div className="float-left w-full xl:w-1/3 xl:h-5/6 p-5 xl:py-0 ">
                 <EcoPyramidDetail name={selectedOrganism}/>
             </div>
-        </>
+        </div>
     );
 }

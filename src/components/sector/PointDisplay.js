@@ -1,4 +1,5 @@
 import { OrganismPointSVG } from "./OrganismPointSVG.js";
+import '../../css/organism_icon.css';
 
 export function PointDisplay({orgopoints}) {
     const unitAbbreviations = {
