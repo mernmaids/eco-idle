@@ -1,7 +1,8 @@
 
 import {
   Route,
-  Switch
+  Switch,
+  Redirect
 } from "react-router-dom";
 
 import { Sector } from './sector/Sector.js';
@@ -27,6 +28,9 @@ export function ContentView({ data }) {
       </Route>
       <Route exact path="/settings">
         <SettingsMenu/>
+      </Route>
+      <Route exact path="/">
+        <Redirect to="/sector"/>
       </Route>
     </Switch>
   );
