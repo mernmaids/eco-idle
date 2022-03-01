@@ -5,6 +5,7 @@ import './css/default.css';
 
 // React
 import { useEffect, useState } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
 // App Data
 import { getData } from './services/Api.js';
@@ -21,12 +22,13 @@ Parse.serverURL = Env.SERVER_URL;
 
 function App() {
     const [data, setData] = useState();
-    const [view, setView] = useState('sector');
-    function handleMenuSelect(selection) {
-        if(view !== setView) {
-            setView(selection);
-        }
-    }
+    const routes = [
+        ["/sector", "Sector"],
+        ["/shrooms", "Shroom Shop"],
+        ["/prestige", "Prestige"],
+        ["/enviro", "Enviro Shop"],
+        ["/settings", "Settings"]
+    ];
 
     // only gets save data at first render
     useEffect(() => {
@@ -38,8 +40,10 @@ function App() {
     if(data) {
         return (
             <div className="h-screen main">
-                    <Menu onMenuSelect={handleMenuSelect} options={data.menuOptions}/>
-                    <ContentView data={data} view={view}/>
+                <BrowserRouter>
+                    <Menu options={routes}/>
+                    <ContentView data={data} />
+                </BrowserRouter>
             </div>
         );
     } else {
