@@ -10,21 +10,21 @@ import { SettingsMenu } from './settings/SettingsMenu.js';
 import { Shop } from './shop/Shop.js';
 import { Prestige } from './prestige/Prestige.js';
 
-export function ContentView({ data }) {
+export function ContentView({ saveData, organisms, shroomShopItems, enviroShopItems }) {
   // choose which view to render based on the selected option
   return (
     <Switch>
       <Route exact path="/sector">
-        <Sector savedata={data.saveData}/>
+        <Sector savedata={saveData} organisms={organisms}/>
       </Route>
       <Route exact path="/shrooms">
-        <Shop shopdata={data.saveData.shroomShopData}/>
+        <Shop shopName="Shroom Shop" shopdata={shroomShopItems}/>
       </Route>
       <Route exact path="/prestige">
         <Prestige/>
       </Route>
       <Route exact path="/enviro">
-        <Shop shopdata={data.saveData.enviroShopData}/>
+        <Shop shopName="Enviro Shop" shopdata={enviroShopItems}/>
       </Route>
       <Route exact path="/settings">
         <SettingsMenu/>

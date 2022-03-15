@@ -11,9 +11,8 @@ export function EcoPyramidView({ organisms, selectedOrganism }) {
         "primary_consumer": [],
         "producer" : [],
     };
-    for(let name of Object.keys(organisms)) {
-        let organism = organisms[name];
-        defaultDisplayData[organism.category].push(organism.name);
+    for(let organism of organisms) {
+        defaultDisplayData[organism.get("category")].push(organism.get("name"));
     }
 
     const [displayData, shiftRow] = useReducer(executeShift, defaultDisplayData);
@@ -48,13 +47,13 @@ export function EcoPyramidView({ organisms, selectedOrganism }) {
                         {/* get the first "visible" organisms and render those */}
                         {displayData[category].slice(0,visible[category]).map( 
                             (organismName) => {
-                                const org = organisms.find(o => o.name === organismName);
+                                const org = organisms.find(o => o.get("name") === organismName);
                                 return (
                                     <EcoPyramidOrganism 
-                                        key={org.name}
-                                        name={org.name} 
-                                        onClick={() => selectedOrganism(org.name)}
-                                        delay={org.delay}
+                                        key={org.get("name")}
+                                        name={org.get("name")} 
+                                        onClick={() => selectedOrganism(org.get("name"))}
+                                        delay={org.get("delay")}
                                     />);
                             }
                         )}

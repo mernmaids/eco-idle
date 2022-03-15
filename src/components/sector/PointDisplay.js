@@ -1,7 +1,7 @@
 import { OrganismPointSVG } from "./OrganismPointSVG.js";
 import '../../css/organism_icon.css';
 
-export function PointDisplay({orgopoints}) {
+export function PointDisplay({savedata}) {
     const unitAbbreviations = {
         "million" : "m",
         "billion" : "b",
@@ -13,7 +13,7 @@ export function PointDisplay({orgopoints}) {
             {/*  we use the raw SVG XML here so we can animate it */}
             <OrganismPointSVG/>
             <div className="organism-point-readout">
-                {orgopoints ? orgopoints.magnitude : ""} {orgopoints ? unitAbbreviations[orgopoints.unit] : ""}
+                {savedata.get("organismPoints") ? savedata.get("organismPoints") : ""} {savedata.get("organismPoints") ? unitAbbreviations[savedata.get("unit")] : ""}
             </div>
         </div>
     </div>

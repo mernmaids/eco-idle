@@ -8,7 +8,10 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
 // App Data
-import { getData } from './services/Api.js';
+import { getSaveDataById } from './services/SaveDataService.js';
+import { getAllOrganisms } from './services/OrganismService.js';
+import { getAllShroomShopItems } from './services/ShroomShopItemService.js';
+import { getAllEnviroShopItems } from './services/EnviroShopItemService.js';
 import * as Env from './services/Environments';
 import Parse from 'parse';
 
@@ -21,7 +24,11 @@ Parse.initialize(Env.APPLICATION_ID, Env.JAVASCRIPT_KEY);
 Parse.serverURL = Env.SERVER_URL;
 
 function App() {
-    const [data, setData] = useState();
+    const [saveData, setSaveData] = useState();
+    const [organisms, setOrganisms] = useState();
+    const [shroomShopItems, setShroomShopItems] = useState();
+    const [enviroShopItems, setEnviroShopItems] = useState();
+
     const routes = [
         ["/sector", "Sector"],
         ["/shrooms", "Shroom Shop"],
@@ -32,17 +39,26 @@ function App() {
 
     // only gets save data at first render
     useEffect(() => {
-        getData().then((d) => {
-            setData(d);
+        getSaveDataById("2RyzVpHdxr").then((d) => {
+            setSaveData(d);
+        });
+        getAllOrganisms().then((d) => {
+            setOrganisms(d);
+        });
+        getAllShroomShopItems().then((d) => {
+            setShroomShopItems(d);
+        });
+        getAllEnviroShopItems().then((d) => {
+            setEnviroShopItems(d);
         });
     }, []);
 
-    if(data) {
+    if(saveData && organisms && shroomShopItems && enviroShopItems) {
         return (
             <div className="h-screen main">
                 <BrowserRouter>
                     <Menu options={routes}/>
-                    <ContentView data={data} />
+                    <ContentView saveData={saveData} organisms={organisms} shroomShopItems={shroomShopItems} enviroShopItems={enviroShopItems}  />
                 </BrowserRouter>
             </div>
         );
