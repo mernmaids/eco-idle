@@ -9,4 +9,14 @@ export const getAllOrganisms = () => {
     });
 }
 
-// TODO: add function to get organisms with specific biome
+export const getOrganismsByBiome = (biome) => {
+    const Organism = Parse.Object.extend("Organism");
+    const query = new Parse.Query(Organism);
+    query.equalTo("biome", biome);
+    return query.find().then((results) => {
+        return results;
+    });
+
+}
+
+// TODO: add more useful functions

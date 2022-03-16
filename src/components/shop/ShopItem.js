@@ -4,7 +4,7 @@ export function ShopItem({itemdata}) {
             <h2 className="text-center text-2xl mb-3">{itemdata.get("name")}</h2>
             <p>{itemdata.get("description")}</p>
             <br/>
-            <p><i>{itemdata.get("effect_value")} to {itemdata.get("effect_stat")}</i></p>
+            <p><i>{itemdata.get("effectValue")} to {itemdata.get("effectStat")}</i></p>
             <br/>
             <div className="text-center">
                 <button className="bg-light-blue-darken-hover p-3 border-2 border-black rounded">Buy ({itemdata.get("cost")} points)</button>

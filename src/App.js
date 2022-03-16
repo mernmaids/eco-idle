@@ -10,8 +10,7 @@ import { BrowserRouter } from 'react-router-dom';
 // App Data
 import { getSaveDataById } from './services/SaveDataService.js';
 import { getAllOrganisms } from './services/OrganismService.js';
-import { getAllShroomShopItems } from './services/ShroomShopItemService.js';
-import { getAllEnviroShopItems } from './services/EnviroShopItemService.js';
+import { getAllShroomShopItems, getAllEnviroShopItems } from './services/ShopItemService.js';
 import * as Env from './services/Environments';
 import Parse from 'parse';
 
