@@ -26,3 +26,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 Component tree:
 
 ![component tree diagram](docs/component_tree.png)
+
+UML Diagram:
+
+![uml_diagram](docs/UMLDiagram.png)
