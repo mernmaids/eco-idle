@@ -38,7 +38,7 @@ function App() {
 
     // only gets save data at first render
     useEffect(() => {
-        getSaveDataById("2RyzVpHdxr").then((d) => {
+        getSaveDataById("nypWfKd5jq").then((d) => {
             setSaveData(d);
         });
         getAllOrganisms().then((d) => {

@@ -9,6 +9,8 @@ import { Sector } from './sector/Sector.js';
 import { SettingsMenu } from './settings/SettingsMenu.js';
 import { Shop } from './shop/Shop.js';
 import { Prestige } from './prestige/Prestige.js';
+import Login from './auth/Login.js';
+import Register from './auth/Register.js';
 
 export function ContentView({ saveData, organisms, shroomShopItems, enviroShopItems }) {
   // choose which view to render based on the selected option
@@ -28,6 +30,12 @@ export function ContentView({ saveData, organisms, shroomShopItems, enviroShopIt
       </Route>
       <Route exact path="/settings">
         <SettingsMenu/>
+      </Route>
+      <Route exact path="/login">
+        <Login/>
+      </Route>
+      <Route exact path="/register">
+        <Register/>
       </Route>
       <Route exact path="/">
         <Redirect to="/sector"/>
