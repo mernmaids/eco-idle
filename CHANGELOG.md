@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.3.0] - 2022-03-29
+
+## Added
+- MAJOR Added user account creation and authentication.
+- MINOR Added auth-protected routes
+- MINOR Added login page, logout in settings menu
+
 ## [0.2.0] - 2022-03-16
 
 No special upgrading notes necessary.
