@@ -2,11 +2,12 @@ import { OrganismPointSVG } from "./OrganismPointSVG.js";
 import '../../css/organism_icon.css';
 
 export function PointDisplay({savedata}) {
-    const unitAbbreviations = {
-        "million" : "m",
-        "billion" : "b",
-        "thousand": "k"
-    };
+    // to be used later
+    // const unitAbbreviations = {
+    //     "million" : "m",
+    //     "billion" : "b",
+    //     "thousand": "k"
+    // };
     console.log(savedata);
     console.log(savedata.get('organismPoints'));
     return (
