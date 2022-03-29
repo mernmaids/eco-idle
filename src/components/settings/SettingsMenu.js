@@ -1,6 +1,19 @@
 import { ContentBox } from "../ui/ContentBox.js";
+import { useHistory } from "react-router-dom";
+import { logOutUser } from "../../services/AuthService.js"
 
 export function SettingsMenu() {
+    const history = useHistory();
+
+    // logs user out and rediects to login screen
+    const logoutHandler = (e) => {
+        logOutUser().then((r) => {
+            alert("Logged out!");
+            history.push("/auth/login");
+        })
+    };
+
+
     return (
         <ContentBox>
             <h1 className="text-center text-5xl mb-5">settings</h1>
@@ -26,6 +39,9 @@ export function SettingsMenu() {
                 <br/><br/>
                 <button className="text-l border-solid border-2 border-slate-900 rounded bg-light-blue-darken-hover p-2 m-2">
                     Save Settings
+                </button>
+                <button className="text-l border-solid border-2 border-slate-900 rounded bg-light-blue-darken-hover p-2 m-2" onClick={logoutHandler}>
+                    Logout
                 </button>
             </form>
         </ContentBox>
