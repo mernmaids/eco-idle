@@ -20,6 +20,7 @@ const Register = () => {
     const [unusedEmail, setUnusedEmail] = useState(true);
     const [done, setDone] = useState(false);
 
+    // user submits their info
     useEffect(() => {
         if (newUser && add && passwordsMatch && unusedUsername && unusedEmail) {
             createUser(newUser).then((userCreated) => {
@@ -32,12 +33,14 @@ const Register = () => {
         }
     }, [newUser, add, passwordsMatch, unusedUsername, unusedEmail]);
 
+    // updates screen dynamically when user is typing
     useEffect(() => {
         setPasswordsMatch(newUser['password'] === newUser['confirmPassword']);
         usernameUsed(newUser).then((result) => setUnusedUsername(!result));
         emailUsed(newUser).then((result) => setUnusedEmail(!result));
     }, [newUser])
 
+    // redirects user after registering
     useEffect(() => {
         if (done) history.push("/auth/login");
     }, [done, history]);

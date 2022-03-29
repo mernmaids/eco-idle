@@ -60,3 +60,5 @@ export const checkCurrentUser = () => {
 export const logOutUser = () => {
     return Parse.User.logOut();
 };
+
+// TODO: create service that retrieves current user

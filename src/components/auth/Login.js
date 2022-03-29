@@ -16,6 +16,7 @@ const Login = () => {
       const [submit, setSubmit] = useState(false);
       const [loggedIn, setLoggedIn] = useState(checkCurrentUser());
     
+      // user submits their info
       useEffect(() => {
         if (user && submit) {
           logInUser(user).then((userLoggedIn) => {
@@ -24,13 +25,13 @@ const Login = () => {
               setLoginFailed(false);
             } else {
               setLoginFailed(true);
-              // alert("Login failed!");
             }
             setSubmit(false);
           });
         }
       }, [user, submit]);
 
+      // redirects user after logging in
       useEffect(() => {
         if (loggedIn) {
           history.push("/"); 

@@ -5,7 +5,7 @@ import { logOutUser } from "../../services/AuthService.js"
 export function SettingsMenu() {
     const history = useHistory();
 
-    // TODO: fix issue with autosave; sometimes returns to settings, even when attempting to go back to login
+    // logs user out and rediects to login screen
     const logoutHandler = (e) => {
         logOutUser().then((r) => {
             alert("Logged out!");
