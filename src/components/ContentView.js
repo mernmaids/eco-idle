@@ -9,36 +9,28 @@ import { Sector } from './sector/Sector.js';
 import { SettingsMenu } from './settings/SettingsMenu.js';
 import { Shop } from './shop/Shop.js';
 import { Prestige } from './prestige/Prestige.js';
-import Login from './auth/Login.js';
-import Register from './auth/Register.js';
 
 export function ContentView({ saveData, organisms, shroomShopItems, enviroShopItems }) {
   // choose which view to render based on the selected option
   return (
     <Switch>
-      <Route exact path="/sector">
+      <Route exact path="/play/sector">
         <Sector savedata={saveData} organisms={organisms}/>
       </Route>
-      <Route exact path="/shrooms">
+      <Route exact path="/play/shrooms">
         <Shop shopName="Shroom Shop" shopdata={shroomShopItems}/>
       </Route>
-      <Route exact path="/prestige">
+      <Route exact path="/play/prestige">
         <Prestige/>
       </Route>
-      <Route exact path="/enviro">
+      <Route exact path="/play/enviro">
         <Shop shopName="Enviro Shop" shopdata={enviroShopItems}/>
       </Route>
-      <Route exact path="/settings">
+      <Route exact path="/play/settings">
         <SettingsMenu/>
       </Route>
-      <Route exact path="/login">
-        <Login/>
-      </Route>
-      <Route exact path="/register">
-        <Register/>
-      </Route>
-      <Route exact path="/">
-        <Redirect to="/sector"/>
+      <Route exact path="/play">
+        <Redirect to="/play/sector"/>
       </Route>
     </Switch>
   );

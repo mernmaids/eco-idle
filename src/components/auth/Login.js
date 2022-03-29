@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Form from "./Form.js";
 import { logInUser, checkCurrentUser } from "../../services/AuthService.js";
 
 const Login = () => {
     const history = useHistory();
 
+    const [loginFailed, setLoginFailed] = useState(false);
     const [user, setUser] = useState({
         username: "",
         password: ""
@@ -19,10 +20,11 @@ const Login = () => {
         if (user && submit) {
           logInUser(user).then((userLoggedIn) => {
             if (userLoggedIn) {
-              alert(`Logged in!`);
               setLoggedIn(true);
+              setLoginFailed(false);
             } else {
-              alert("Login failed!");
+              setLoginFailed(true);
+              // alert("Login failed!");
             }
             setSubmit(false);
           });
@@ -30,8 +32,11 @@ const Login = () => {
       }, [user, submit]);
 
       useEffect(() => {
-          if (loggedIn) history.push("/sector");
-      }, [loggedIn]);
+        if (loggedIn) {
+          history.push("/"); 
+          window.location.reload();
+        }
+      }, [loggedIn, history]);
     
       const onChangeHandler = (e) => {
         e.preventDefault();
@@ -48,19 +53,21 @@ const Login = () => {
       };
 
     return (
-        <div>
-            <h1>Eco Idle</h1>
-            <div>
-                <Form
-                    user={user}
-                    onChange={onChangeHandler}
-                    onSubmit={onSubmitHandler}
-                    newUser={false}
-                />
-            </div>
-            <h3>Don't have an account? Register here!</h3>
-            <Link to="/register"><button>Register</button></Link>
-        </div>
+        <>
+          <div>
+              {
+                loginFailed ? (
+                  <span className="text-rose-500">Invalid username or password.</span>
+                ) : ""
+              }
+              <Form
+                  user={user}
+                  onChange={onChangeHandler}
+                  onSubmit={onSubmitHandler}
+                  newUser={false}
+              />
+          </div>
+        </>
     );
 }
 

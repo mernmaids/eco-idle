@@ -9,7 +9,7 @@ export function SettingsMenu() {
     const logoutHandler = (e) => {
         logOutUser().then((r) => {
             alert("Logged out!");
-            history.push("/login");
+            history.push("/auth/login");
         })
     };
 

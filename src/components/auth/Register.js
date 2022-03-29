@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { createUser, usernameUsed, emailUsed, logOutUser } from "../../services/AuthService.js";
+import { useHistory } from "react-router-dom";
+import { createUser, usernameUsed, emailUsed, } from "../../services/AuthService.js";
 import Form from "./Form.js";
 
 
@@ -15,9 +15,9 @@ const Register = () => {
       });
 
     const [add, setAdd] = useState(false);
-    const [passwordsMatch, setPasswordsMatch] = useState(false);
-    const [unusedUsername, setUnusedUsername] = useState(false);
-    const [unusedEmail, setUnusedEmail] = useState(false);
+    const [passwordsMatch, setPasswordsMatch] = useState(true);
+    const [unusedUsername, setUnusedUsername] = useState(true);
+    const [unusedEmail, setUnusedEmail] = useState(true);
     const [done, setDone] = useState(false);
 
     useEffect(() => {
@@ -39,8 +39,8 @@ const Register = () => {
     }, [newUser])
 
     useEffect(() => {
-        if (done) history.push("/login");
-    }, [done]);
+        if (done) history.push("/auth/login");
+    }, [done, history]);
 
     const onChangeHandler = (e) => {
         e.preventDefault();
@@ -58,9 +58,6 @@ const Register = () => {
 
     return (
         <div>
-            <div>
-                <h1>Register</h1>
-            </div>
             {passwordsMatch ? "" : (<div>"Passwords do not match!"<br /></div> )}
             {unusedUsername ? "" : (<div>"Username has already been used!"<br /></div>)}
             {unusedEmail ? "" : (<div>"Email has already been used!"<br /></div>)}
@@ -72,11 +69,6 @@ const Register = () => {
                     newUser={true}
                 />
             </div>
-            <div>
-                <h3>Already have an account? Log in here!</h3>
-                <Link to="/login"><button>Log in</button></Link>
-            </div>
-
         </div>
     );
 }

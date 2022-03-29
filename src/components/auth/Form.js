@@ -1,12 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Form = ({ user, onChange, onSubmit, newUser }) => {
     return (
-      <div>
+      <div className="pt-10 text-xl text-center">
         <form onSubmit={onSubmit} autoComplete="off">
         <div>
-            <label>Username</label>
-            <br />
+            <label>Username: </label>
             <input
               type="text"
               className="form-control"
@@ -18,10 +18,10 @@ const Form = ({ user, onChange, onSubmit, newUser }) => {
               required
             />
           </div>
+          <div className="my-2"/>
           {newUser ? (
           <div>
-            <label>Email</label>
-            <br />
+            <label>Email: </label>
             <input
               type="email"
               className="form-control"
@@ -34,9 +34,9 @@ const Form = ({ user, onChange, onSubmit, newUser }) => {
             />
           </div>
           ) : ""}
+          <div className="my-4"/>
           <div>
-            <label>Password</label>
-            <br />
+            <label>Password: </label>
             <input
               type="password"
               className="form-control"
@@ -48,11 +48,11 @@ const Form = ({ user, onChange, onSubmit, newUser }) => {
               required
             />
           </div>
+          <div className="my-2"/>
           {newUser ? (
             <div>
               <div>
-                <label>Confirm Password</label>
-                <br />
+                <label>Confirm Password: </label>
                 <input
                   type="password"
                   className="form-control"
@@ -67,11 +67,26 @@ const Form = ({ user, onChange, onSubmit, newUser }) => {
           ) : (
             ""
           )}
-          <div>
-            <button type="submit" onSubmit={onSubmit}>
+          <div className="my-5">
+            <button className="text-l border-solid border-2 border-slate-900 rounded bg-light-blue-darken-hover p-2 m-2" type="submit" onSubmit={onSubmit}>
               Submit
             </button>
           </div>
+            <div className="text-left text-md">
+              { newUser ? (<>
+                <h3>Already have an account? Log in here!</h3>
+                <Link to="/auth/login">
+                    <button className="border-solid border-2 border-slate-900 rounded bg-light-blue-darken-hover p-2 m-2">
+                        Log in
+                </button></Link>
+              </>) : (<>
+                <h3>Don't have an account? Register here!</h3>
+                <Link to="/auth/register">
+                    <button className="border-solid border-2 border-slate-900 rounded bg-light-blue-darken-hover p-2 m-2">
+                        Register
+                </button></Link>
+              </>)}
+            </div>
         </form>
       </div>
     );
