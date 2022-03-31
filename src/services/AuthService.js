@@ -6,6 +6,7 @@ export const createUser = (newUser) => {
     user.set("username", newUser.username);
     user.set("email", newUser.email);
     user.set("password", newUser.password);
+    user.set("organismPoints", 2);
   
     return user
       .signUp()
@@ -29,6 +30,10 @@ export const logInUser = (newUser) => {
         .then((userLoggedIn) => {
         console.log("logged in: ", userLoggedIn);
         return userLoggedIn;
+        }).then((d) => {
+
+            Parse.Cloud.run('setUsersAcls', {test: "test"})
+            return d;
         })
         .catch((error) => {
         console.log(error);
@@ -61,4 +66,6 @@ export const logOutUser = () => {
     return Parse.User.logOut();
 };
 
-// TODO: create service that retrieves current user
+export const getCurrentUser = () => {
+    return Parse.User.current();
+};

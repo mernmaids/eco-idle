@@ -4,14 +4,14 @@ import './css/fonts.css';
 import './css/default.css';
 
 // React
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
 // App Data
-import { getSaveDataById } from './services/SaveDataService.js';
-import { getAllOrganisms } from './services/OrganismService.js';
-import { getAllShroomShopItems, getAllEnviroShopItems } from './services/ShopItemService.js';
-import { checkCurrentUser } from './services/AuthService';
+import { getAllOrganisms, getUserOrganisms } from './services/OrganismService.js';
+import { getAllShroomShopItems, getAllEnviroShopItems, getUserItems } from './services/ShopItemService.js';
+import { checkCurrentUser, getCurrentUser } from './services/AuthService.js';
+import { getUserOrganismUpgrades } from './services/UpgradeService.js';
 import * as Env from './services/Environments';
 import Parse from 'parse';
 
@@ -29,6 +29,9 @@ function App() {
     const [organisms, setOrganisms] = useState();
     const [shroomShopItems, setShroomShopItems] = useState();
     const [enviroShopItems, setEnviroShopItems] = useState();
+    const [userOrganisms, setUserOrganisms] = useState();
+    const [userOrganismUpgrades, setUserOrganismUpgrades] = useState();
+    const [userItems, setUserItems] = useState();
 
     const routes = [
         ["/play/sector", "Sector"],
@@ -38,11 +41,25 @@ function App() {
         ["/play/settings", "Settings"]
     ];
 
+    // used to force rerender
+    const [, updateState] = useState();
+    const forceUpdate = useCallback(() => updateState({}), []);
+
     // only gets save data at first render
     useEffect(() => {
-        getSaveDataById("nypWfKd5jq").then((d) => {
-            setSaveData(d);
-        });
+        if (checkCurrentUser()) {
+            setSaveData(getCurrentUser());
+            getUserOrganisms(getCurrentUser()).then((d) => {
+                setUserOrganisms(d);
+            });
+            getUserOrganismUpgrades(getCurrentUser()).then((d) => {
+                setUserOrganismUpgrades(d);
+            })
+            getUserItems(getCurrentUser()).then((d) => {
+                setUserItems(d);
+            })
+            
+        }
         getAllOrganisms().then((d) => {
             setOrganisms(d);
         });
@@ -54,21 +71,60 @@ function App() {
         });
     }, []);
 
-    if(saveData && organisms && shroomShopItems && enviroShopItems) {
-        return (
-            <BrowserRouter>
-                <Switch>
-                    {
-                        checkCurrentUser() ? (
-                            /* Redirect to logged-in view if user logged in*/
+    // Update functions
+    function updateSaveData(key, value) {
+        saveData.increment(key, value);
+        //setSaveData(saveData);
+        forceUpdate();
+    }
+
+    let updateUserOrganisms = (newOrganism) => {
+        setUserOrganisms([...userOrganisms, newOrganism]);
+    }
+
+    let updateUserOrganismUpgrades = (newUpgrade) => {
+        setUserOrganismUpgrades([...userOrganismUpgrades, newUpgrade]);
+    }
+
+    let updateUserItems = (newItem) => {
+        userItems.push(newItem);
+        setUserItems([...userItems]);
+
+    }
+
+
+    let saveToServer = () => {
+        saveData.save();
+        userOrganisms.map((organism) => organism.save()); // Could make more efficient by checking if each organism is dirty
+        userOrganismUpgrades.map((upgrade) => upgrade.save(null, {cascadeSave: false}));
+        userItems.map((item) => item.save());
+        console.log("just saved!");
+    }
+
+
+    return (
+        <BrowserRouter>
+            <Switch>
+                {
+                    checkCurrentUser() ? (
+                        /* Redirect to logged-in view if user logged in*/
+                        (saveData && organisms && shroomShopItems && enviroShopItems && userOrganisms && userOrganismUpgrades && userItems) ? (
                             <>
                             <Route path="/play">
                                 <Main 
                                     routes={routes} 
-                                    saveData={saveData} 
-                                    organisms={organisms} 
+                                    saveData={saveData}
+                                    updateSaveData={updateSaveData}
+                                    updateUserOrganisms={updateUserOrganisms}
+                                    updateUserOrganismUpgrades={updateUserOrganismUpgrades}
+                                    saveToServer={saveToServer}
+                                    userOrganisms={userOrganisms} 
+                                    organisms={organisms}
+                                    userOrganismUpgrades={userOrganismUpgrades}
                                     shroomShopItems={shroomShopItems} 
-                                    enviroShopItems={enviroShopItems}  
+                                    enviroShopItems={enviroShopItems}
+                                    userItems={userItems}
+                                    updateUserItems={updateUserItems}  
                                 />
                             </Route>
                             <Route path="/">
@@ -78,19 +134,18 @@ function App() {
                                 <Redirect to="/play/sector"/>
                             </Route>
                             </>
-                        ) : (
-                            /* Redirect to auth view if user logged out */
-                            <Landing/>
-                        )
-                    }
-                </Switch>
-            </BrowserRouter>
-        );
-    } else {
-        return (
-            <LoadingScreen/>
-        )
-    }
+                            ) : (
+                            <LoadingScreen/>
+                            )
+                        
+                    ) : (
+                        /* Redirect to auth view if user logged out */
+                        <Landing/>
+                    )
+                }
+            </Switch>
+        </BrowserRouter>
+    );
 }
 
 export default App;

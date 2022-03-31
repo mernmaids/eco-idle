@@ -2,7 +2,7 @@ import { ContentBox } from "../ui/ContentBox.js";
 import { useHistory } from "react-router-dom";
 import { logOutUser } from "../../services/AuthService.js"
 
-export function SettingsMenu() {
+export function SettingsMenu({saveToServer}) {
     const history = useHistory();
 
     // logs user out and rediects to login screen
@@ -43,7 +43,10 @@ export function SettingsMenu() {
                 <button className="text-l border-solid border-2 border-slate-900 rounded bg-light-blue-darken-hover p-2 m-2" onClick={logoutHandler}>
                     Logout
                 </button>
-            </form>
+                </form>
+                <button onClick={(e) => saveToServer()} className="text-l border-solid border-2 border-slate-900 rounded bg-light-blue-darken-hover p-2 m-2">
+                    Save Game
+                </button>
         </ContentBox>
     );
 }
