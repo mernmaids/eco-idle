@@ -52,7 +52,7 @@ export function EcoPyramidView({ organisms, selectedOrganism }) {
                                     <EcoPyramidOrganism 
                                         key={org.get("name")}
                                         name={org.get("name")} 
-                                        onClick={() => selectedOrganism(org.get("name"))}
+                                        onClick={() => selectedOrganism(org)}
                                         delay={org.get("delay")}
                                     />);
                             }

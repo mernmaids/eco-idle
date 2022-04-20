@@ -8,8 +8,6 @@ export function PointDisplay({savedata}) {
     //     "billion" : "b",
     //     "thousand": "k"
     // };
-    console.log(savedata);
-    console.log(savedata.get('organismPoints'));
     return (
     <div className="w-full text-center text-5xl p-5 h-1/6">
         <div className="p-5 organism-point-meter" title="Organism Points">

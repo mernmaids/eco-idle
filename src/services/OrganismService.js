@@ -19,4 +19,15 @@ export const getOrganismsByBiome = (biome) => {
 
 }
 
+export const getUserOrganisms = (user) => {
+    const Organism = Parse.Object.extend("Organism");
+    const query = new Parse.Query(Organism);
+    query.equalTo("user", user);
+    return query.find().then((results) => {
+        console.log(results);
+        return results;
+    });
+
+}
+
 // TODO: add more useful functions

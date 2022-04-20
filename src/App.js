@@ -8,10 +8,9 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
 // App Data
-import { getSaveDataById } from './services/SaveDataService.js';
-import { getAllOrganisms } from './services/OrganismService.js';
+import { getAllOrganisms, getUserOrganisms } from './services/OrganismService.js';
 import { getAllShroomShopItems, getAllEnviroShopItems } from './services/ShopItemService.js';
-import { checkCurrentUser } from './services/AuthService';
+import { checkCurrentUser, getCurrentUser } from './services/AuthService.js';
 import * as Env from './services/Environments';
 import Parse from 'parse';
 
@@ -29,6 +28,7 @@ function App() {
     const [organisms, setOrganisms] = useState();
     const [shroomShopItems, setShroomShopItems] = useState();
     const [enviroShopItems, setEnviroShopItems] = useState();
+    const [userOrganisms, setUserOrganisms] = useState();
 
     const routes = [
         ["/play/sector", "Sector"],
@@ -40,9 +40,13 @@ function App() {
 
     // only gets save data at first render
     useEffect(() => {
-        getSaveDataById("nypWfKd5jq").then((d) => {
-            setSaveData(d);
-        });
+        if (checkCurrentUser()) {
+            setSaveData(getCurrentUser());
+            getUserOrganisms(getCurrentUser()).then((d) => {
+                setUserOrganisms(d);
+            });
+            
+        }
         getAllOrganisms().then((d) => {
             setOrganisms(d);
         });
@@ -54,30 +58,36 @@ function App() {
         });
     }, []);
 
-    if(saveData && organisms && shroomShopItems && enviroShopItems) {
+
         return (
             <BrowserRouter>
                 <Switch>
                     {
                         checkCurrentUser() ? (
                             /* Redirect to logged-in view if user logged in*/
-                            <>
-                            <Route path="/play">
-                                <Main 
-                                    routes={routes} 
-                                    saveData={saveData} 
-                                    organisms={organisms} 
-                                    shroomShopItems={shroomShopItems} 
-                                    enviroShopItems={enviroShopItems}  
-                                />
-                            </Route>
-                            <Route path="/">
-                                <Redirect to="/play/sector"/>
-                            </Route>
-                            <Route path="/login">
-                                <Redirect to="/play/sector"/>
-                            </Route>
-                            </>
+                            (saveData && organisms && shroomShopItems && enviroShopItems && userOrganisms) ? (
+                                <>
+                                <Route path="/play">
+                                    <Main 
+                                        routes={routes} 
+                                        saveData={saveData}
+                                        userOrganisms={userOrganisms} 
+                                        organisms={organisms} 
+                                        shroomShopItems={shroomShopItems} 
+                                        enviroShopItems={enviroShopItems}  
+                                    />
+                                </Route>
+                                <Route path="/">
+                                    <Redirect to="/play/sector"/>
+                                </Route>
+                                <Route path="/login">
+                                    <Redirect to="/play/sector"/>
+                                </Route>
+                                </>
+                                ) : (
+                                <LoadingScreen/>
+                                )
+                            
                         ) : (
                             /* Redirect to auth view if user logged out */
                             <Landing/>
@@ -86,11 +96,6 @@ function App() {
                 </Switch>
             </BrowserRouter>
         );
-    } else {
-        return (
-            <LoadingScreen/>
-        )
-    }
 }
 
 export default App;
