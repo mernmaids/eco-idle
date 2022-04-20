@@ -58,6 +58,14 @@ function App() {
         });
     }, []);
 
+    // Update functions
+    function updateSaveData(key, value) {
+        if(saveData.set(key, value)) {
+            setSaveData(saveData.clone()); // needs to be clone to trigger rerender
+        }
+
+    }
+
 
         return (
             <BrowserRouter>
@@ -71,6 +79,7 @@ function App() {
                                     <Main 
                                         routes={routes} 
                                         saveData={saveData}
+                                        updateSaveData={updateSaveData}
                                         userOrganisms={userOrganisms} 
                                         organisms={organisms} 
                                         shroomShopItems={shroomShopItems} 
