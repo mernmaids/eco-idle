@@ -26,10 +26,6 @@
     animation-duration: 5s;
 }
 
-.bg-disabled {
-    background-color: #afb3b0;
-}
-
 .progress {
     width: 50%;
     height: 100%;

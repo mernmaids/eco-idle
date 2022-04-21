@@ -2,7 +2,7 @@ import { useReducer } from "react";
 
 import { EcoPyramidOrganism } from "./EcoPyramidOrganism.js";
 
-export function EcoPyramidView({ organisms, selectedOrganism, userOrganisms}) {
+export function EcoPyramidView({ organisms, selectedOrganism, userOrganisms, savedata}) {
     // since we're modifying a given value, reducer is appropriate to use here
     // set up our categories
     const defaultDisplayData = {

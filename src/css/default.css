@@ -39,6 +39,10 @@ body {
     background-color: #267ced;
 }
 
+.bg-disabled,.bg-gray {
+    background-color: #afb3b0;
+}
+
 .select-arrow {
     direction: ltr;
     padding-top: 25px;
