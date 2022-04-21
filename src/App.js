@@ -4,7 +4,7 @@ import './css/fonts.css';
 import './css/default.css';
 
 // React
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
 // App Data
@@ -38,6 +38,10 @@ function App() {
         ["/play/settings", "Settings"]
     ];
 
+    // used to force rerender
+    const [, updateState] = useState();
+    const forceUpdate = useCallback(() => updateState({}), []);
+
     // only gets save data at first render
     useEffect(() => {
         if (checkCurrentUser()) {
@@ -60,10 +64,19 @@ function App() {
 
     // Update functions
     function updateSaveData(key, value) {
-        if(saveData.set(key, value)) {
-            setSaveData(saveData.clone()); // needs to be clone to trigger rerender
-        }
+        saveData.increment(key, value);
+        setSaveData(saveData); // needs to be clone to trigger rerender
+        forceUpdate();
+    }
 
+    function updateUserOrganisms(newOrganism) {
+        userOrganisms.push(newOrganism);
+        setUserOrganisms([...userOrganisms]);
+    }
+
+    function saveToServer() {
+        saveData.save();
+        userOrganisms.map((organism) => organism.save()); // Could make more efficient by checking if each organism is dirty
     }
 
     return (
@@ -79,6 +92,8 @@ function App() {
                                     routes={routes} 
                                     saveData={saveData}
                                     updateSaveData={updateSaveData}
+                                    updateUserOrganisms={updateUserOrganisms}
+                                    saveToServer={saveToServer}
                                     userOrganisms={userOrganisms} 
                                     organisms={organisms} 
                                     shroomShopItems={shroomShopItems} 

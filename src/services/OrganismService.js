@@ -1,4 +1,5 @@
 import Parse from "parse";
+import { getCurrentUser } from "./AuthService";
 
 // gets all organisms
 export const getAllOrganisms = () => {
@@ -30,14 +31,14 @@ export const getUserOrganisms = (user) => {
 
 }
 
-export const createUserOrganism = (organism, organismType) => {
-    const user = organism.get("user");
-    const UserOrganism = new Parse.Object.extend("Organism");
-    const newOrganism = UserOrganism.newInstance();
+export const createUserOrganism = (organismType) => {
+    const user = getCurrentUser();
+    let newOrganism = new Parse.Object("Organism");
     newOrganism.set('nOwned', 1);
     newOrganism.set('user', user);
     newOrganism.set('organism', organismType);
-    newOrganism.save();
+    //newOrganism.save(); should probably not save automatically
+    return newOrganism;
 }
 
 // TODO: add more useful functions
