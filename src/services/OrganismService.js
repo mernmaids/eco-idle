@@ -30,4 +30,14 @@ export const getUserOrganisms = (user) => {
 
 }
 
+export const createUserOrganism = (organism, organismType) => {
+    const user = organism.get("user");
+    const UserOrganism = new Parse.Object.extend("Organism");
+    const newOrganism = UserOrganism.newInstance();
+    newOrganism.set('nOwned', 1);
+    newOrganism.set('user', user);
+    newOrganism.set('organism', organismType);
+    newOrganism.save();
+}
+
 // TODO: add more useful functions

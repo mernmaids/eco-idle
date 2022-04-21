@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default function Logic({saveData, updateSaveData, userOrganisms, organisms, shroomShopItems, enviroShopItems}) {
+export default function PointCollectionLogic({saveData, updateSaveData, userOrganisms, organisms, shroomShopItems, enviroShopItems}) {
     // setup and use intervals to add to score
     // setup at beginning of login
     const [organismIntervals, setOrganismIntervals] = useState({});
@@ -10,7 +10,6 @@ export default function Logic({saveData, updateSaveData, userOrganisms, organism
         }, organism.get("organism").get("delay") * 1000));
         setOrganismIntervals(organismIntervals);
     }, []);
-
 
     return (null);
 }

@@ -14,7 +14,7 @@ export function PointDisplay({savedata}) {
             {/*  we use the raw SVG XML here so we can animate it */}
             <OrganismPointSVG/>
             <div className="organism-point-readout">
-                {savedata.get("organismPoints")}
+                {savedata.get("organismPoints").toLocaleString()}
                 {/* {savedata.get("organismPoints") ? savedata.get("organismPoints") : ""} {savedata.get("organismPoints") ? unitAbbreviations[savedata.get("unit")] : ""} */}
             </div>
         </div>

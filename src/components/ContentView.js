@@ -18,13 +18,13 @@ export function ContentView({ saveData, userOrganisms, organisms, shroomShopItem
         <Sector savedata={saveData} userOrganisms={userOrganisms} organisms={organisms}/>
       </Route>
       <Route exact path="/play/shrooms">
-        <Shop shopName="Shroom Shop" shopdata={shroomShopItems}/>
+        <Shop shopName="Shroom Shop" shopdata={shroomShopItems} savedata={saveData} />
       </Route>
       <Route exact path="/play/prestige">
         <Prestige/>
       </Route>
       <Route exact path="/play/enviro">
-        <Shop shopName="Enviro Shop" shopdata={enviroShopItems}/>
+        <Shop shopName="Enviro Shop" shopdata={enviroShopItems} savedata={saveData} />
       </Route>
       <Route exact path="/play/settings">
         <SettingsMenu/>

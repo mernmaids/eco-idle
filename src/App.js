@@ -66,45 +66,44 @@ function App() {
 
     }
 
-
-        return (
-            <BrowserRouter>
-                <Switch>
-                    {
-                        checkCurrentUser() ? (
-                            /* Redirect to logged-in view if user logged in*/
-                            (saveData && organisms && shroomShopItems && enviroShopItems && userOrganisms) ? (
-                                <>
-                                <Route path="/play">
-                                    <Main 
-                                        routes={routes} 
-                                        saveData={saveData}
-                                        updateSaveData={updateSaveData}
-                                        userOrganisms={userOrganisms} 
-                                        organisms={organisms} 
-                                        shroomShopItems={shroomShopItems} 
-                                        enviroShopItems={enviroShopItems}  
-                                    />
-                                </Route>
-                                <Route path="/">
-                                    <Redirect to="/play/sector"/>
-                                </Route>
-                                <Route path="/login">
-                                    <Redirect to="/play/sector"/>
-                                </Route>
-                                </>
-                                ) : (
-                                <LoadingScreen/>
-                                )
-                            
-                        ) : (
-                            /* Redirect to auth view if user logged out */
-                            <Landing/>
-                        )
-                    }
-                </Switch>
-            </BrowserRouter>
-        );
+    return (
+        <BrowserRouter>
+            <Switch>
+                {
+                    checkCurrentUser() ? (
+                        /* Redirect to logged-in view if user logged in*/
+                        (saveData && organisms && shroomShopItems && enviroShopItems && userOrganisms) ? (
+                            <>
+                            <Route path="/play">
+                                <Main 
+                                    routes={routes} 
+                                    saveData={saveData}
+                                    updateSaveData={updateSaveData}
+                                    userOrganisms={userOrganisms} 
+                                    organisms={organisms} 
+                                    shroomShopItems={shroomShopItems} 
+                                    enviroShopItems={enviroShopItems}  
+                                />
+                            </Route>
+                            <Route path="/">
+                                <Redirect to="/play/sector"/>
+                            </Route>
+                            <Route path="/login">
+                                <Redirect to="/play/sector"/>
+                            </Route>
+                            </>
+                            ) : (
+                            <LoadingScreen/>
+                            )
+                        
+                    ) : (
+                        /* Redirect to auth view if user logged out */
+                        <Landing/>
+                    )
+                }
+            </Switch>
+        </BrowserRouter>
+    );
 }
 
 export default App;
