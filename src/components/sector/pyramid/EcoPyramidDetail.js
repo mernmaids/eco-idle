@@ -1,7 +1,7 @@
-import PurchaseOrganism from "../../logic/Purchase";
+import { PurchaseOrganism, PurchaseOrganismUpgrade } from "../../logic/Purchase";
 import { calculateOrganismCost, calculateUpgradeCost } from "../../logic/Upgrade";
 
-export function EcoPyramidDetail({organism, userOrganism, updateUserOrganisms, updateSaveData, userOrganismUpgrades, upgrades, savedata}) {
+export function EcoPyramidDetail({organism, userOrganism, updateUserOrganisms, updateSaveData, userOrganismUpgrades, updateUserOrganismUpgrades, upgrades, savedata}) {
     const points = savedata.get("organismPoints");
     let owned = 0;
     if(userOrganism)
@@ -30,7 +30,7 @@ export function EcoPyramidDetail({organism, userOrganism, updateUserOrganisms, u
                             else if(points > cost && owned > 0) {
                                 return <li key={i}>
                                     <b>Upgrade {i + 1}: {upgrade.get("name")}</b>
-                                    <button className="border-solid border-2 bg-light-blue-darken-hover border-slate-900 p-1 m-1 rounded">
+                                    <button onClick={(e) => PurchaseOrganismUpgrade(upgrade, updateUserOrganismUpgrades, updateSaveData, cost)} className="border-solid border-2 bg-light-blue-darken-hover border-slate-900 p-1 m-1 rounded">
                                         Purchase: {cost.toLocaleString()} O-Points
                                     </button>
                                 </li>;

@@ -80,9 +80,15 @@ function App() {
         setUserOrganisms([...userOrganisms]);
     }
 
+    function updateUserOrganismUpgrades(newUpgrade){
+        userOrganismUpgrades.push(newUpgrade);
+        setUserOrganismUpgrades([...userOrganismUpgrades]);
+    }
+
     function saveToServer() {
         saveData.save();
         userOrganisms.map((organism) => organism.save()); // Could make more efficient by checking if each organism is dirty
+        userOrganismUpgrades.map((upgrade) => upgrade.save(null, {cascadeSave: false}));
     }
 
     return (
@@ -99,6 +105,7 @@ function App() {
                                     saveData={saveData}
                                     updateSaveData={updateSaveData}
                                     updateUserOrganisms={updateUserOrganisms}
+                                    updateUserOrganismUpgrades={updateUserOrganismUpgrades}
                                     saveToServer={saveToServer}
                                     userOrganisms={userOrganisms} 
                                     organisms={organisms}

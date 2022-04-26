@@ -20,9 +20,17 @@ export const getUserOrganismUpgrades = (user) => {
     return query.find().then((results) => { // creates a temp array of the targets, attaches it to each upgrade
         results.forEach((result) => {
             result.get("upgrade").get("effectTarget").query().find().then((t) => {
-                result.set("newTarget", t);
+                result.get("upgrade").set("newTarget", t);
             })
         })
         return results;
     });
+}
+
+export function createUserOrganismUpgrade(upgrade) {
+    const user = getCurrentUser();
+    let newUpgrade = new Parse.Object("OrganismUpgrade");
+    newUpgrade.set('user', user);
+    newUpgrade.set('upgrade', upgrade);
+    return newUpgrade;
 }
