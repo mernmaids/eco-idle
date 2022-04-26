@@ -1,6 +1,7 @@
 import PurchaseOrganism from "../../logic/Purchase";
+import { calculateOrganismCost } from "../../logic/Upgrade";
 
-export function EcoPyramidDetail({organism, userOrganism, updateUserOrganisms, updateSaveData, upgrades, savedata}) {
+export function EcoPyramidDetail({organism, userOrganism, updateUserOrganisms, updateSaveData, userOrganismUpgrades, upgrades, savedata}) {
     const points = savedata.get("organismPoints");
     let owned = 0;
     if(userOrganism)
@@ -42,14 +43,14 @@ export function EcoPyramidDetail({organism, userOrganism, updateUserOrganisms, u
                     Number Owned: {userOrganism ? userOrganism.get('nOwned') : 0}
                 </div>
                 {(function() {
-                    const cost = organism.get("cost");
+                    const cost = calculateOrganismCost(organism, userOrganism, userOrganismUpgrades);
                     if(points > cost) {
-                        return (<button onClick={(e) => PurchaseOrganism(organism, userOrganism, updateUserOrganisms, updateSaveData, userOrganism ? (Math.ceil(cost * (organism.get("rate")**userOrganism.get("nOwned")))) : cost)} className="border-solid rounded border-slate-900 border-2 bg-light-blue-darken-hover p-2 m-2">
-                            Buy One ({userOrganism ? (Math.ceil(cost * (organism.get("rate")**userOrganism.get("nOwned")))).toLocaleString() : cost.toLocaleString()} O-Points)
+                        return (<button onClick={(e) => PurchaseOrganism(organism, userOrganism, updateUserOrganisms, updateSaveData, cost)} className="border-solid rounded border-slate-900 border-2 bg-light-blue-darken-hover p-2 m-2">
+                            Buy One ({cost.toLocaleString()} O-Points)
                         </button>);
                     } else {
                         return (<button className="border-solid rounded border-slate-900 border-2 bg-disabled p-2 m-2">
-                            Buy One ({userOrganism ? (Math.ceil(cost * (organism.get("rate")**userOrganism.get("nOwned")))).toLocaleString() : cost.toLocaleString()} O-Points)
+                            Buy One ({cost.toLocaleString()} O-Points)
                         </button>);
                     }
                 })()}
@@ -58,4 +59,3 @@ export function EcoPyramidDetail({organism, userOrganism, updateUserOrganisms, u
     );
     return resp;
 }
-// TODO: Make purchase button disabled when attempting to buy something too expensive

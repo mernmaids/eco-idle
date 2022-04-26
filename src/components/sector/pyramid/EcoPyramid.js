@@ -4,7 +4,7 @@ import { getUpgradesByOrganism } from "../../../services/UpgradeService.js";
 
 import { useState, useEffect } from "react";
 
-export function EcoPyramid({ organisms, userOrganisms, updateUserOrganisms, updateSaveData, savedata}) {
+export function EcoPyramid({ organisms, userOrganisms, updateUserOrganisms, updateSaveData, userOrganismUpgrades, savedata}) {
     const [selectedOrganism, selectOrganism] = useState(organisms[0]);
     const [upgrades, setUpgrades] = useState([]);
 
@@ -29,6 +29,7 @@ export function EcoPyramid({ organisms, userOrganisms, updateUserOrganisms, upda
                     userOrganism={userOrganisms.find(o => o.get("organism").equals(selectedOrganism))}
                     updateUserOrganisms={updateUserOrganisms}
                     updateSaveData={updateSaveData}
+                    userOrganismUpgrades={userOrganismUpgrades}
                     upgrades={upgrades}
                     savedata={savedata}
                 />

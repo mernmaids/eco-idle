@@ -11,6 +11,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { getAllOrganisms, getUserOrganisms } from './services/OrganismService.js';
 import { getAllShroomShopItems, getAllEnviroShopItems } from './services/ShopItemService.js';
 import { checkCurrentUser, getCurrentUser } from './services/AuthService.js';
+import { getUserOrganismUpgrades } from './services/UpgradeService.js';
 import * as Env from './services/Environments';
 import Parse from 'parse';
 
@@ -29,6 +30,8 @@ function App() {
     const [shroomShopItems, setShroomShopItems] = useState();
     const [enviroShopItems, setEnviroShopItems] = useState();
     const [userOrganisms, setUserOrganisms] = useState();
+    const [userOrganismUpgrades, setUserOrganismUpgrades] = useState();
+    const [userShopPurchases, setUserShopPurchases] = useState();
 
     const routes = [
         ["/play/sector", "Sector"],
@@ -49,6 +52,9 @@ function App() {
             getUserOrganisms(getCurrentUser()).then((d) => {
                 setUserOrganisms(d);
             });
+            getUserOrganismUpgrades(getCurrentUser()).then((d) => {
+                setUserOrganismUpgrades(d);
+            })
             
         }
         getAllOrganisms().then((d) => {
@@ -65,7 +71,7 @@ function App() {
     // Update functions
     function updateSaveData(key, value) {
         saveData.increment(key, value);
-        setSaveData(saveData); // needs to be clone to trigger rerender
+        setSaveData(saveData);
         forceUpdate();
     }
 
@@ -85,7 +91,7 @@ function App() {
                 {
                     checkCurrentUser() ? (
                         /* Redirect to logged-in view if user logged in*/
-                        (saveData && organisms && shroomShopItems && enviroShopItems && userOrganisms) ? (
+                        (saveData && organisms && shroomShopItems && enviroShopItems && userOrganisms && userOrganismUpgrades) ? (
                             <>
                             <Route path="/play">
                                 <Main 
@@ -95,7 +101,8 @@ function App() {
                                     updateUserOrganisms={updateUserOrganisms}
                                     saveToServer={saveToServer}
                                     userOrganisms={userOrganisms} 
-                                    organisms={organisms} 
+                                    organisms={organisms}
+                                    userOrganismUpgrades={userOrganismUpgrades}
                                     shroomShopItems={shroomShopItems} 
                                     enviroShopItems={enviroShopItems}  
                                 />
