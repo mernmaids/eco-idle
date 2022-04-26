@@ -25,7 +25,6 @@ export const getUserOrganisms = (user) => {
     const query = new Parse.Query(Organism);
     query.equalTo("user", user);
     return query.find().then((results) => {
-        console.log(results);
         return results;
     });
 

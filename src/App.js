@@ -87,11 +87,12 @@ function App() {
 
 
     let saveToServer = () => {
-        console.log('right before saving to server: ', userOrganisms);
+        //console.log('right before saving to server: ', userOrganisms);
         //console.log("save data being saved: ", saveData);
         saveData.save();
         userOrganisms.map((organism) => organism.save()); // Could make more efficient by checking if each organism is dirty
         userOrganismUpgrades.map((upgrade) => upgrade.save(null, {cascadeSave: false}));
+        console.log("just autosaved");
     }
 
 

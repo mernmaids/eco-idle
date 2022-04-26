@@ -3,7 +3,6 @@ import { PurchaseOrganism, PurchaseOrganismUpgrade } from "../../logic/Purchase"
 import { calculateOrganismCost, calculateUpgradeCost } from "../../logic/Upgrade";
 
 export function EcoPyramidDetail({organism, userOrganism, updateUserOrganisms, updateSaveData, userOrganismUpgrades, updateUserOrganismUpgrades, upgrades, savedata}) {
-    console.log("inside EcoPyramidDetail");
     const points = savedata.get("organismPoints");
     let owned = 0;
     if(userOrganism)
