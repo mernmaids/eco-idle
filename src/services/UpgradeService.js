@@ -32,5 +32,8 @@ export function createUserOrganismUpgrade(upgrade) {
     let newUpgrade = new Parse.Object("OrganismUpgrade");
     newUpgrade.set('user', user);
     newUpgrade.set('upgrade', upgrade);
+    upgrade.get("effectTarget").query().find().then((t) => {
+        upgrade.set("newTarget", t);
+    })
     return newUpgrade;
 }

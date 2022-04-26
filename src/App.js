@@ -71,25 +71,29 @@ function App() {
     // Update functions
     function updateSaveData(key, value) {
         saveData.increment(key, value);
-        setSaveData(saveData);
+        //setSaveData(saveData);
         forceUpdate();
+        //console.log("save data being updated: ", saveData);
     }
 
-    function updateUserOrganisms(newOrganism) {
-        userOrganisms.push(newOrganism);
-        setUserOrganisms([...userOrganisms]);
+    let updateUserOrganisms = (newOrganism) => {
+        setUserOrganisms([...userOrganisms, newOrganism]); 
     }
 
-    function updateUserOrganismUpgrades(newUpgrade){
-        userOrganismUpgrades.push(newUpgrade);
-        setUserOrganismUpgrades([...userOrganismUpgrades]);
+    let updateUserOrganismUpgrades = (newUpgrade) => {
+        setUserOrganismUpgrades([...userOrganismUpgrades, newUpgrade]);
+        //console.log('right after update: ', userOrganismUpgrades);
     }
 
-    function saveToServer() {
+
+    let saveToServer = () => {
+        console.log('right before saving to server: ', userOrganisms);
+        //console.log("save data being saved: ", saveData);
         saveData.save();
         userOrganisms.map((organism) => organism.save()); // Could make more efficient by checking if each organism is dirty
         userOrganismUpgrades.map((upgrade) => upgrade.save(null, {cascadeSave: false}));
     }
+
 
     return (
         <BrowserRouter>

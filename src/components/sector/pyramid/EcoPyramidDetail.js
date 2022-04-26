@@ -1,7 +1,9 @@
+import { cloneElement } from "react";
 import { PurchaseOrganism, PurchaseOrganismUpgrade } from "../../logic/Purchase";
 import { calculateOrganismCost, calculateUpgradeCost } from "../../logic/Upgrade";
 
 export function EcoPyramidDetail({organism, userOrganism, updateUserOrganisms, updateSaveData, userOrganismUpgrades, updateUserOrganismUpgrades, upgrades, savedata}) {
+    console.log("inside EcoPyramidDetail");
     const points = savedata.get("organismPoints");
     let owned = 0;
     if(userOrganism)
@@ -18,7 +20,7 @@ export function EcoPyramidDetail({organism, userOrganism, updateUserOrganisms, u
                     <ul className="list-disc px-5">
                         {
                         upgrades.map((upgrade, i) => {
-                            const cost = calculateUpgradeCost(upgrade, organism, userOrganismUpgrades);
+                            let cost = calculateUpgradeCost(upgrade, organism, userOrganismUpgrades);
                             if (userOrganismUpgrades.some((u) => u.get("upgrade").equals(upgrade))) {
                                 return <li key={i}>
                                 <b>Upgrade {i + 1}: {upgrade.get("name")}</b>
@@ -51,7 +53,7 @@ export function EcoPyramidDetail({organism, userOrganism, updateUserOrganisms, u
                     Number Owned: {userOrganism ? userOrganism.get('nOwned') : 0}
                 </div>
                 {(function() {
-                    const cost = calculateOrganismCost(organism, userOrganism, userOrganismUpgrades);
+                    let cost = calculateOrganismCost(organism, userOrganism, userOrganismUpgrades);
                     if(points > cost) {
                         return (<button onClick={(e) => PurchaseOrganism(organism, userOrganism, updateUserOrganisms, updateSaveData, cost)} className="border-solid rounded border-slate-900 border-2 bg-light-blue-darken-hover p-2 m-2">
                             Buy One ({cost.toLocaleString()} O-Points)

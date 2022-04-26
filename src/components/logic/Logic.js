@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 
-export default function PointCollectionLogic({saveToServer, saveData, updateSaveData, userOrganisms, organisms, shroomShopItems, enviroShopItems}) {
+export default function PointCollectionLogic({saveToServer, saveData, updateSaveData, userOrganisms, userOrganismUpgrades, organisms, shroomShopItems, enviroShopItems}) {
 
     const [organismIntervals, setOrganismIntervals] = useState({});
     const [autosaveInterval, setAutosaveInterval] = useState([]);
-    const [showAlert, setShowAlert] = useState(false);
+
+    //console.log("inside logic: ", userOrganisms);
 
     // add timer for organisms and newly purchased organism
     useEffect(() => {
@@ -17,23 +18,19 @@ export default function PointCollectionLogic({saveToServer, saveData, updateSave
                 setOrganismIntervals(organismIntervals);
             }
         })
-    }, [userOrganisms])
+    }, [userOrganisms]);
 
     // sets autosave timer
     // TODO: Make it change based on user options
     // TODO: Make it show quick alert when autosave occurs
     useEffect(() => {
+        //console.log("in autosave setup: ", userOrganisms);
         setAutosaveInterval(setInterval(() => {
+            //console.log("about to autosave: ", userOrganisms);
             saveToServer();
-            setShowAlert(true);
-            console.log("showing alert");
-            setTimeout(() => {
-                setShowAlert(false);
-                console.log("stop showing alert");
-            }, 3000);
         }, 10 * 1000));
-
-    }, []);
+        return clearInterval(autosaveInterval);
+    }, [userOrganisms, userOrganismUpgrades]);
 
     return (null);
 }
