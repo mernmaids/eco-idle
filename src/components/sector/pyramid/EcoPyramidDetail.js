@@ -28,7 +28,7 @@ export function EcoPyramidDetail({organism, userOrganism, updateUserOrganisms, u
                                 </button>
                             </li>;
                             }
-                            else if(points > cost && owned > 0) {
+                            else if(points >= cost && owned > 0) {
                                 return <li key={i}>
                                     <b>Upgrade {i + 1}: {upgrade.get("name")}</b>
                                     <button onClick={(e) => PurchaseOrganismUpgrade(upgrade, updateUserOrganismUpgrades, updateSaveData, cost)} className="border-solid border-2 bg-light-blue-darken-hover border-slate-900 p-1 m-1 rounded">
@@ -53,7 +53,7 @@ export function EcoPyramidDetail({organism, userOrganism, updateUserOrganisms, u
                 </div>
                 {(function() {
                     let cost = calculateOrganismCost(organism, userOrganism, userOrganismUpgrades);
-                    if(points > cost) {
+                    if(points >= cost) {
                         return (<button onClick={(e) => PurchaseOrganism(organism, userOrganism, updateUserOrganisms, updateSaveData, cost)} className="border-solid rounded border-slate-900 border-2 bg-light-blue-darken-hover p-2 m-2">
                             Buy One ({cost.toLocaleString()} O-Points)
                         </button>);

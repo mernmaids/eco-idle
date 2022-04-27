@@ -6,6 +6,7 @@ export const createUser = (newUser) => {
     user.set("username", newUser.username);
     user.set("email", newUser.email);
     user.set("password", newUser.password);
+    user.set("organismPoints", 2);
   
     return user
       .signUp()

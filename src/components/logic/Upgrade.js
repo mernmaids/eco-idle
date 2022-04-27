@@ -44,7 +44,13 @@ export function calculatePointsPerCycle(organism, userOrganismUpgrades, x) {
     // console.log("ccc: ", organism.get("organism").get("ccc")*(1000 + cccSum)/1000);
     // console.log("ccm: ", Math.ceil(organism.get("organism").get("ccm")*(100 + ccmSum)/100));
     // console.log("x: ", x);
-    return x < organism.get("organism").get("ccc")*(1000 + cccSum)/1000 ? Math.ceil(organism.get("organism").get("points") * organism.get("nOwned") * pointMultiplier) * Math.ceil(organism.get("organism").get("ccm")*(100 + ccmSum)/100) : Math.ceil(organism.get("organism").get("points") * organism.get("nOwned") * pointMultiplier);
+    if (x < organism.get("organism").get("ccc")*(1000 + cccSum)/1000){
+        console.log("Critical cycle!");
+        return Math.ceil(organism.get("organism").get("points") * organism.get("nOwned") * pointMultiplier) * Math.ceil(organism.get("organism").get("ccm")*(100 + ccmSum)/100);
+
+    } else {
+        return Math.ceil(organism.get("organism").get("points") * organism.get("nOwned") * pointMultiplier);
+    }
 }
 
 export function calculateDelay(organism, userOrganismUpgrades) {
