@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { calculatePointsPerCycle } from "./Upgrade";
+import { calculatePointsPerCycle, calculateDelay } from "./Upgrade";
 
 export default function PointCollectionLogic({saveToServer, saveData, updateSaveData, userOrganisms, userOrganismUpgrades, organisms, shroomShopItems, enviroShopItems}) {
 
@@ -17,7 +17,7 @@ export default function PointCollectionLogic({saveToServer, saveData, updateSave
 
             organismIntervals[organism.get("organism").get("name")] = setInterval(() => {
                 updateSaveData("organismPoints", calculatePointsPerCycle(organism, userOrganismUpgrades));
-            }, organism.get("organism").get("delay") * 1000); // VERY NOT GOOD! RESETS ALL INTERVALS EVERYTIME AND IDK HOW TO FIX IT
+            }, calculateDelay(organism, userOrganismUpgrades)); // VERY NOT GOOD! RESETS ALL INTERVALS EVERYTIME AND IDK HOW TO FIX IT
             // IMMA JUST CALL THIS A LIMITATION OF BUILDING A GAME IN REACT
 
         });

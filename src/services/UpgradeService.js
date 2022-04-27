@@ -10,7 +10,7 @@ export const getUpgradesByOrganism = (organism) => {
     });
 }
 
-export const getUserOrganismUpgrades = (user) => {
+export function getUserOrganismUpgrades(user) {
     const Upgrade = Parse.Object.extend("OrganismUpgrade");
     const query = new Parse.Query(Upgrade);
     query.equalTo("user", user);
@@ -18,12 +18,14 @@ export const getUserOrganismUpgrades = (user) => {
     query.include("upgrade.organism"); // makes sure this is included
     query.include("upgrade.effectTarget");
     return query.find().then((results) => { // creates a temp array of the targets, attaches it to each upgrade
-        results.forEach((result) => {
-            result.get("upgrade").get("effectTarget").query().find().then((t) => {
-                result.get("upgrade").set("newTarget", t);
-            })
-        })
-        return results;
+         results.forEach(async (result) => {
+            let x = await result.get("upgrade").get("effectTarget").query().find();
+                result.get("upgrade").set("newTarget", x);
+            });
+            return results;
+    }).then((r) => {
+        console.log(r);
+        return r;
     });
 }
 
@@ -32,8 +34,8 @@ export function createUserOrganismUpgrade(upgrade) {
     let newUpgrade = new Parse.Object("OrganismUpgrade");
     newUpgrade.set('user', user);
     newUpgrade.set('upgrade', upgrade);
-    upgrade.get("effectTarget").query().find().then((t) => {
+    return upgrade.get("effectTarget").query().find().then((t) => {
         upgrade.set("newTarget", t);
-    })
-    return newUpgrade;
+        return newUpgrade;
+    });
 }

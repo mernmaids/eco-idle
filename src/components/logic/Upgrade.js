@@ -13,8 +13,7 @@ export function calculateOrganismCost(organism, userOrganism, userOrganismUpgrad
 export function calculateUpgradeCost(upgrade, organism, userOrganismUpgrades) {
     let costMultiplier = 1.0;
     userOrganismUpgrades.forEach(upgrade => { // loops through every upgrade lol
-        //console.log("upgrade: ", upgrade);
-        if (upgrade.get("upgrade").get("effectStat") == "uc" && upgrade.get("upgrade").get("newTarget") && upgrade.get("upgrade").get("newTarget").some((target) => organism.equals(target))){ // may need to change; waits until it can find newTarget, something odd with loading
+        if (upgrade.get("upgrade").get("effectStat") === "uc" && upgrade.get("upgrade").get("newTarget") && upgrade.get("upgrade").get("newTarget").some((target) => organism.equals(target))){ // may need to change; waits until it can find newTarget, something odd with loading
             costMultiplier *= (100 - parseInt(upgrade.get("upgrade").get("effectValue").slice(1, -1)))/100;
         }
     });
@@ -25,10 +24,22 @@ export function calculateUpgradeCost(upgrade, organism, userOrganismUpgrades) {
 export function calculatePointsPerCycle(organism, userOrganismUpgrades) {
     let pointMultiplier = 1.0;
     userOrganismUpgrades.forEach(upgrade => { // loops through every upgrade lol
-        if (upgrade.get("upgrade").get("effectStat") == "ppc" && upgrade.get("upgrade").get("newTarget") && upgrade.get("upgrade").get("newTarget").some((target) => organism.get("organism").equals(target))){ // may need to change; waits until it can find newTarget, something odd with loading
+        if (upgrade.get("upgrade").get("effectStat") === "ppc" && upgrade.get("upgrade").get("newTarget") && upgrade.get("upgrade").get("newTarget").some((target) => organism.get("organism").equals(target))){ // may need to change; waits until it can find newTarget, something odd with loading
             pointMultiplier += (parseInt(upgrade.get("upgrade").get("effectValue").slice(0, -1)))/100.0;
         }
     });
 
     return Math.ceil(organism.get("organism").get("points") * organism.get("nOwned") * pointMultiplier);
+}
+
+export function calculateDelay(organism, userOrganismUpgrades) {
+    let delayMultiplier = 1.0;
+    userOrganismUpgrades.forEach(upgrade => { // loops through every upgrade lol
+        if (upgrade.get("upgrade").get("effectStat") === "cil" && upgrade.get("upgrade").get("newTarget") && upgrade.get("upgrade").get("newTarget").some((target) => organism.get("organism").equals(target))){ // may need to change; waits until it can find newTarget, something odd with loading
+            delayMultiplier *= (100 - parseInt(upgrade.get("upgrade").get("effectValue").slice(1, -1)))/100.0;
+        }
+    });
+
+    return organism.get("organism").get("delay") * 1000 * delayMultiplier;
+
 }

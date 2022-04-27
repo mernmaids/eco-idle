@@ -82,7 +82,7 @@ function App() {
 
     let updateUserOrganismUpgrades = (newUpgrade) => {
         setUserOrganismUpgrades([...userOrganismUpgrades, newUpgrade]);
-        //console.log('right after update: ', userOrganismUpgrades);
+        console.log('right after update: ', userOrganismUpgrades);
     }
 
 
@@ -102,7 +102,7 @@ function App() {
                 {
                     checkCurrentUser() ? (
                         /* Redirect to logged-in view if user logged in*/
-                        (saveData && organisms && shroomShopItems && enviroShopItems && userOrganisms && userOrganismUpgrades) ? (
+                        (saveData && organisms && shroomShopItems && enviroShopItems && userOrganisms && userOrganismUpgrades ) ? (
                             <>
                             <Route path="/play">
                                 <Main 
