@@ -19,6 +19,7 @@ export async function PurchaseOrganismUpgrade(upgrade, updateUserOrganismUpgrade
 }
 
 export function PurchaseItem(item, updateUserItems, updateSaveData, cost) {
-    updateUserItems(createUserItem(item));
+    let x = createUserItem(item);
+    updateUserItems(x);
     updateSaveData("organismPoints", -cost);
 }

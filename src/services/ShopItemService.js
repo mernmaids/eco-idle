@@ -35,7 +35,7 @@ export function getUserItems(user) {
 // create a new user item
 export function createUserItem(item) {
     const user = getCurrentUser();
-    let newItem = new Parse.Object("ShopPurchase");
+    const newItem = new Parse.Object("ShopPurchase");
     newItem.set('user', user);
     newItem.set('item', item);
     return newItem;

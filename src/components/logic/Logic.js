@@ -15,13 +15,13 @@ export default function PointCollectionLogic({saveToServer, saveData, updateSave
 
             organismIntervals[organism.get("organism").get("name")] = setInterval(() => {
                 let x = Math.random();
-                updateSaveData("organismPoints", calculatePointsPerCycle(organism, userOrganismUpgrades, x));
-            }, calculateDelay(organism, userOrganismUpgrades)); // VERY NOT GOOD! RESETS ALL INTERVALS EVERYTIME AND IDK HOW TO FIX IT
+                updateSaveData("organismPoints", calculatePointsPerCycle(organism, userOrganismUpgrades, userItems, x));
+            }, calculateDelay(organism, userOrganismUpgrades, userItems)); // VERY NOT GOOD! RESETS ALL INTERVALS EVERYTIME AND IDK HOW TO FIX IT
             // IMMA JUST CALL THIS A LIMITATION OF BUILDING A GAME IN REACT
 
         });
         setOrganismIntervals(organismIntervals);
-    }, [userOrganisms, userOrganismUpgrades]);
+    }, [userOrganisms, userOrganismUpgrades, userItems]);
 
     // sets autosave timer
     // TODO: Make it change based on user options
@@ -31,12 +31,12 @@ export default function PointCollectionLogic({saveToServer, saveData, updateSave
         const interval = setInterval(() => {
             //console.log("about to autosave: ", userOrganisms);
             saveToServer();
-        }, 30 * 1000);
+        }, 10 * 1000);
         return () => {
             clearInterval(interval);
             console.log("just cleared interval");
         };
-    }, [userOrganisms, userOrganismUpgrades]);
+    }, [userOrganisms, userOrganismUpgrades, userItems]);
 
     return (null);
 }

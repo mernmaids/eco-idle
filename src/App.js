@@ -80,7 +80,7 @@ function App() {
     }
 
     let updateUserOrganisms = (newOrganism) => {
-        setUserOrganisms([...userOrganisms, newOrganism]); 
+        setUserOrganisms([...userOrganisms, newOrganism]);
     }
 
     let updateUserOrganismUpgrades = (newUpgrade) => {
@@ -89,7 +89,9 @@ function App() {
     }
 
     let updateUserItems = (newItem) => {
-        setUserItems([...userItems, newItem]);
+        userItems.push(newItem);
+        setUserItems([...userItems]);
+
     }
 
 
@@ -99,6 +101,8 @@ function App() {
         saveData.save();
         userOrganisms.map((organism) => organism.save()); // Could make more efficient by checking if each organism is dirty
         userOrganismUpgrades.map((upgrade) => upgrade.save(null, {cascadeSave: false}));
+        console.log("userItems: ", userItems);
+        userItems.map((item) => item.save());
         console.log("just autosaved");
     }
 

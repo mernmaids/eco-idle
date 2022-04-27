@@ -15,7 +15,7 @@ export function ContentView({ saveData, updateSaveData, userOrganisms, updateUse
   return (
     <Switch>
       <Route exact path="/play/sector">
-        <Sector savedata={saveData} updateSaveData={updateSaveData} userOrganisms={userOrganisms} updateUserOrganisms={updateUserOrganisms} userOrganismUpgrades={userOrganismUpgrades} updateUserOrganismUpgrades={updateUserOrganismUpgrades} organisms={organisms}/>
+        <Sector savedata={saveData} updateSaveData={updateSaveData} userOrganisms={userOrganisms} updateUserOrganisms={updateUserOrganisms} userOrganismUpgrades={userOrganismUpgrades} updateUserOrganismUpgrades={updateUserOrganismUpgrades} organisms={organisms} userItems={userItems}/>
       </Route>
       <Route exact path="/play/shrooms">
         <Shop shopName="Shroom Shop" shopdata={shroomShopItems} savedata={saveData} updateSaveData={updateSaveData} userItems={userItems} updateUserItems={updateUserItems}/>
