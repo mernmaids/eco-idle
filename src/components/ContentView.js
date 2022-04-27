@@ -10,7 +10,7 @@ import { SettingsMenu } from './settings/SettingsMenu.js';
 import { Shop } from './shop/Shop.js';
 import { Prestige } from './prestige/Prestige.js';
 
-export function ContentView({ saveData, updateSaveData, userOrganisms, updateUserOrganisms, userOrganismUpgrades, updateUserOrganismUpgrades, organisms, shroomShopItems, enviroShopItems }) {
+export function ContentView({ saveData, updateSaveData, userOrganisms, updateUserOrganisms, userOrganismUpgrades, updateUserOrganismUpgrades, organisms, shroomShopItems, enviroShopItems, userItems, updateUserItems }) {
   // choose which view to render based on the selected option
   return (
     <Switch>
@@ -18,13 +18,13 @@ export function ContentView({ saveData, updateSaveData, userOrganisms, updateUse
         <Sector savedata={saveData} updateSaveData={updateSaveData} userOrganisms={userOrganisms} updateUserOrganisms={updateUserOrganisms} userOrganismUpgrades={userOrganismUpgrades} updateUserOrganismUpgrades={updateUserOrganismUpgrades} organisms={organisms}/>
       </Route>
       <Route exact path="/play/shrooms">
-        <Shop shopName="Shroom Shop" shopdata={shroomShopItems} savedata={saveData} />
+        <Shop shopName="Shroom Shop" shopdata={shroomShopItems} savedata={saveData} updateSaveData={updateSaveData} userItems={userItems} updateUserItems={updateUserItems}/>
       </Route>
       <Route exact path="/play/prestige">
         <Prestige/>
       </Route>
       <Route exact path="/play/enviro">
-        <Shop shopName="Enviro Shop" shopdata={enviroShopItems} savedata={saveData} />
+        <Shop shopName="Enviro Shop" shopdata={enviroShopItems} savedata={saveData} updateSaveData={updateSaveData} userItems={userItems} updateUserItems={updateUserItems}/>
       </Route>
       <Route exact path="/play/settings">
         <SettingsMenu/>

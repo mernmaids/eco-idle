@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { calculatePointsPerCycle, calculateDelay } from "./Upgrade";
 
-export default function PointCollectionLogic({saveToServer, saveData, updateSaveData, userOrganisms, userOrganismUpgrades, organisms, shroomShopItems, enviroShopItems}) {
+export default function PointCollectionLogic({saveToServer, saveData, updateSaveData, userOrganisms, userOrganismUpgrades, organisms, userItems}) {
 
     const [organismIntervals, setOrganismIntervals] = useState({});
 
@@ -31,7 +31,7 @@ export default function PointCollectionLogic({saveToServer, saveData, updateSave
         const interval = setInterval(() => {
             //console.log("about to autosave: ", userOrganisms);
             saveToServer();
-        }, 10 * 1000);
+        }, 30 * 1000);
         return () => {
             clearInterval(interval);
             console.log("just cleared interval");

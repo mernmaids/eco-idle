@@ -20,7 +20,7 @@ export function EcoPyramidDetail({organism, userOrganism, updateUserOrganisms, u
                         {
                         upgrades.map((upgrade, i) => {
                             let cost = calculateUpgradeCost(upgrade, organism, userOrganismUpgrades);
-                            if (userOrganismUpgrades.some((u) => u.get("upgrade").equals(upgrade))) {
+                            if (userOrganismUpgrades.some((u) => u.get("upgrade").equals(upgrade))) { // already purchased
                                 return <li key={i}>
                                 <b>Upgrade {i + 1}: {upgrade.get("name")}</b>
                                 <button className="border-solid border-2 bg-disabled border-slate-900 p-1 m-1 rounded">
@@ -28,14 +28,14 @@ export function EcoPyramidDetail({organism, userOrganism, updateUserOrganisms, u
                                 </button>
                             </li>;
                             }
-                            else if(points >= cost && owned > 0) {
+                            else if(points >= cost && owned > 0) { // able to purchase
                                 return <li key={i}>
                                     <b>Upgrade {i + 1}: {upgrade.get("name")}</b>
                                     <button onClick={(e) => PurchaseOrganismUpgrade(upgrade, updateUserOrganismUpgrades, updateSaveData, cost)} className="border-solid border-2 bg-light-blue-darken-hover border-slate-900 p-1 m-1 rounded">
                                         Purchase: {cost.toLocaleString()} O-Points
                                     </button>
                                 </li>;
-                            } else {
+                            } else { // cannot purchase
                                 return <li key={i}>
                                     <b>Upgrade {i + 1}: {upgrade.get("name")}</b>
                                     <button className="border-solid border-2 bg-disabled border-slate-900 p-1 m-1 rounded">
@@ -53,11 +53,11 @@ export function EcoPyramidDetail({organism, userOrganism, updateUserOrganisms, u
                 </div>
                 {(function() {
                     let cost = calculateOrganismCost(organism, userOrganism, userOrganismUpgrades);
-                    if(points >= cost) {
+                    if(points >= cost) { // able to purchase
                         return (<button onClick={(e) => PurchaseOrganism(organism, userOrganism, updateUserOrganisms, updateSaveData, cost)} className="border-solid rounded border-slate-900 border-2 bg-light-blue-darken-hover p-2 m-2">
                             Buy One ({cost.toLocaleString()} O-Points)
                         </button>);
-                    } else {
+                    } else { // cannot purchase
                         return (<button className="border-solid rounded border-slate-900 border-2 bg-disabled p-2 m-2">
                             Buy One ({cost.toLocaleString()} O-Points)
                         </button>);

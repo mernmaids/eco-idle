@@ -1,4 +1,5 @@
 import Parse from "parse";
+import { getCurrentUser } from "./AuthService";
 
 // gets all shroomShopItems
 export const getAllShroomShopItems = () => {
@@ -18,4 +19,24 @@ export const getAllEnviroShopItems = () => {
     return query.find().then((results) => {
         return results;
     });
+}
+
+// get all items purchased by user
+export function getUserItems(user) {
+    const Item = Parse.Object.extend("ShopPurchase");
+    const query = new Parse.Query(Item);
+    query.equalTo("user", user);
+    query.include("item");
+    return query.find().then((results) => {
+        return results;
+    });
+}
+
+// create a new user item
+export function createUserItem(item) {
+    const user = getCurrentUser();
+    let newItem = new Parse.Object("ShopPurchase");
+    newItem.set('user', user);
+    newItem.set('item', item);
+    return newItem;
 }

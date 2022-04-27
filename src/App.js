@@ -9,7 +9,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 // App Data
 import { getAllOrganisms, getUserOrganisms } from './services/OrganismService.js';
-import { getAllShroomShopItems, getAllEnviroShopItems } from './services/ShopItemService.js';
+import { getAllShroomShopItems, getAllEnviroShopItems, getUserItems } from './services/ShopItemService.js';
 import { checkCurrentUser, getCurrentUser } from './services/AuthService.js';
 import { getUserOrganismUpgrades } from './services/UpgradeService.js';
 import * as Env from './services/Environments';
@@ -31,7 +31,7 @@ function App() {
     const [enviroShopItems, setEnviroShopItems] = useState();
     const [userOrganisms, setUserOrganisms] = useState();
     const [userOrganismUpgrades, setUserOrganismUpgrades] = useState();
-    const [userShopPurchases, setUserShopPurchases] = useState();
+    const [userItems, setUserItems] = useState();
 
     const routes = [
         ["/play/sector", "Sector"],
@@ -54,6 +54,9 @@ function App() {
             });
             getUserOrganismUpgrades(getCurrentUser()).then((d) => {
                 setUserOrganismUpgrades(d);
+            })
+            getUserItems(getCurrentUser()).then((d) => {
+                setUserItems(d);
             })
             
         }
@@ -85,6 +88,10 @@ function App() {
         // console.log('right after update: ', userOrganismUpgrades);
     }
 
+    let updateUserItems = (newItem) => {
+        setUserItems([...userItems, newItem]);
+    }
+
 
     let saveToServer = () => {
         //console.log('right before saving to server: ', userOrganisms);
@@ -102,7 +109,7 @@ function App() {
                 {
                     checkCurrentUser() ? (
                         /* Redirect to logged-in view if user logged in*/
-                        (saveData && organisms && shroomShopItems && enviroShopItems && userOrganisms && userOrganismUpgrades ) ? (
+                        (saveData && organisms && shroomShopItems && enviroShopItems && userOrganisms && userOrganismUpgrades && userItems) ? (
                             <>
                             <Route path="/play">
                                 <Main 
@@ -116,7 +123,9 @@ function App() {
                                     organisms={organisms}
                                     userOrganismUpgrades={userOrganismUpgrades}
                                     shroomShopItems={shroomShopItems} 
-                                    enviroShopItems={enviroShopItems}  
+                                    enviroShopItems={enviroShopItems}
+                                    userItems={userItems}
+                                    updateUserItems={updateUserItems}  
                                 />
                             </Route>
                             <Route path="/">
