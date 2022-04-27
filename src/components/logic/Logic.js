@@ -5,8 +5,6 @@ export default function PointCollectionLogic({saveToServer, saveData, updateSave
 
     const [organismIntervals, setOrganismIntervals] = useState({});
 
-    //console.log("inside logic: ", userOrganisms);
-
     // add timer for organisms and newly purchased organism
     useEffect(() => {
         const keys = Object.keys(organismIntervals);
@@ -16,7 +14,8 @@ export default function PointCollectionLogic({saveToServer, saveData, updateSave
             }
 
             organismIntervals[organism.get("organism").get("name")] = setInterval(() => {
-                updateSaveData("organismPoints", calculatePointsPerCycle(organism, userOrganismUpgrades));
+                let x = Math.random();
+                updateSaveData("organismPoints", calculatePointsPerCycle(organism, userOrganismUpgrades, x));
             }, calculateDelay(organism, userOrganismUpgrades)); // VERY NOT GOOD! RESETS ALL INTERVALS EVERYTIME AND IDK HOW TO FIX IT
             // IMMA JUST CALL THIS A LIMITATION OF BUILDING A GAME IN REACT
 

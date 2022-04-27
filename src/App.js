@@ -82,7 +82,7 @@ function App() {
 
     let updateUserOrganismUpgrades = (newUpgrade) => {
         setUserOrganismUpgrades([...userOrganismUpgrades, newUpgrade]);
-        console.log('right after update: ', userOrganismUpgrades);
+        // console.log('right after update: ', userOrganismUpgrades);
     }
 
 
