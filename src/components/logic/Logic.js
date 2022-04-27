@@ -31,7 +31,7 @@ export default function PointCollectionLogic({saveToServer, saveData, updateSave
         const interval = setInterval(() => {
             //console.log("about to autosave: ", userOrganisms);
             saveToServer();
-        }, 10 * 1000);
+        }, 60 * 1000);
         return () => {
             clearInterval(interval);
             console.log("just cleared interval");

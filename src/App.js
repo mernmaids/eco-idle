@@ -76,7 +76,6 @@ function App() {
         saveData.increment(key, value);
         //setSaveData(saveData);
         forceUpdate();
-        //console.log("save data being updated: ", saveData);
     }
 
     let updateUserOrganisms = (newOrganism) => {
@@ -85,7 +84,6 @@ function App() {
 
     let updateUserOrganismUpgrades = (newUpgrade) => {
         setUserOrganismUpgrades([...userOrganismUpgrades, newUpgrade]);
-        // console.log('right after update: ', userOrganismUpgrades);
     }
 
     let updateUserItems = (newItem) => {
@@ -96,14 +94,11 @@ function App() {
 
 
     let saveToServer = () => {
-        //console.log('right before saving to server: ', userOrganisms);
-        //console.log("save data being saved: ", saveData);
         saveData.save();
         userOrganisms.map((organism) => organism.save()); // Could make more efficient by checking if each organism is dirty
         userOrganismUpgrades.map((upgrade) => upgrade.save(null, {cascadeSave: false}));
-        console.log("userItems: ", userItems);
         userItems.map((item) => item.save());
-        console.log("just autosaved");
+        console.log("just saved!");
     }
 
 

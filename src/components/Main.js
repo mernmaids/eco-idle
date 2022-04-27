@@ -7,7 +7,7 @@ export default function Main({routes, saveData, updateSaveData, updateUserOrgani
         <div className="h-screen main">
                 {<PointCollectionLogic saveToServer={saveToServer} saveData={saveData} updateSaveData={updateSaveData} userOrganisms={userOrganisms} userOrganismUpgrades={userOrganismUpgrades} organisms={organisms} userItems={userItems}/>}
                 <Menu options={routes}/>
-                <ContentView saveData={saveData} updateSaveData={updateSaveData} userOrganisms={userOrganisms} updateUserOrganisms={updateUserOrganisms} userOrganismUpgrades={userOrganismUpgrades} updateUserOrganismUpgrades={updateUserOrganismUpgrades} organisms={organisms} shroomShopItems={shroomShopItems} enviroShopItems={enviroShopItems} userItems={userItems} updateUserItems={updateUserItems} />
+                <ContentView saveToServer={saveToServer} saveData={saveData} updateSaveData={updateSaveData} userOrganisms={userOrganisms} updateUserOrganisms={updateUserOrganisms} userOrganismUpgrades={userOrganismUpgrades} updateUserOrganismUpgrades={updateUserOrganismUpgrades} organisms={organisms} shroomShopItems={shroomShopItems} enviroShopItems={enviroShopItems} userItems={userItems} updateUserItems={updateUserItems} />
         </div>
     );
 

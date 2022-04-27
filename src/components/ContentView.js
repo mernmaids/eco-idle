@@ -10,7 +10,7 @@ import { SettingsMenu } from './settings/SettingsMenu.js';
 import { Shop } from './shop/Shop.js';
 import { Prestige } from './prestige/Prestige.js';
 
-export function ContentView({ saveData, updateSaveData, userOrganisms, updateUserOrganisms, userOrganismUpgrades, updateUserOrganismUpgrades, organisms, shroomShopItems, enviroShopItems, userItems, updateUserItems }) {
+export function ContentView({saveToServer, saveData, updateSaveData, userOrganisms, updateUserOrganisms, userOrganismUpgrades, updateUserOrganismUpgrades, organisms, shroomShopItems, enviroShopItems, userItems, updateUserItems }) {
   // choose which view to render based on the selected option
   return (
     <Switch>
@@ -27,7 +27,7 @@ export function ContentView({ saveData, updateSaveData, userOrganisms, updateUse
         <Shop shopName="Enviro Shop" shopdata={enviroShopItems} savedata={saveData} updateSaveData={updateSaveData} userItems={userItems} updateUserItems={updateUserItems}/>
       </Route>
       <Route exact path="/play/settings">
-        <SettingsMenu/>
+        <SettingsMenu saveToServer={saveToServer}/>
       </Route>
       <Route exact path="/play">
         <Redirect to="/play/sector"/>
