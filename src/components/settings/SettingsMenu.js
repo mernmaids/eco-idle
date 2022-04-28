@@ -40,12 +40,12 @@ export function SettingsMenu({saveToServer}) {
                 <button className="text-l border-solid border-2 border-slate-900 rounded bg-light-blue-darken-hover p-2 m-2">
                     Save Settings
                 </button>
+                <button className="text-l border-solid border-2 border-slate-900 rounded bg-light-blue-darken-hover p-2 m-2" onClick={logoutHandler}>
+                    Logout
+                </button>
                 </form>
                 <button onClick={(e) => saveToServer()} className="text-l border-solid border-2 border-slate-900 rounded bg-light-blue-darken-hover p-2 m-2">
                     Save Game
-                </button>
-                <button className="text-l border-solid border-2 border-slate-900 rounded bg-light-blue-darken-hover p-2 m-2" onClick={logoutHandler}>
-                    Logout
                 </button>
         </ContentBox>
     );

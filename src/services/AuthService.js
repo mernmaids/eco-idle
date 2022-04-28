@@ -30,6 +30,10 @@ export const logInUser = (newUser) => {
         .then((userLoggedIn) => {
         console.log("logged in: ", userLoggedIn);
         return userLoggedIn;
+        }).then((d) => {
+
+            Parse.Cloud.run('setUsersAcls', {test: "test"})
+            return d;
         })
         .catch((error) => {
         console.log(error);
