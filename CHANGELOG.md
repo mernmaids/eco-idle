@@ -1,6 +1,18 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.4.0] - 2022-04-27
+## Added
+- MAJOR Users can now purchase organisms, upgrades, shrooms, and items.
+- MAJOR Users can now earn points from purchased organisms.
+- MINOR Users can save their game, as well as utilize autosave.
+
+## Changed
+- MAJOR Added all organisms, upgrades, shrooms, and items for grassland biome.
+
+## Fixed
+
+
 ## [0.3.0] - 2022-03-29
 
 ## Added
