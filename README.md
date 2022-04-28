@@ -54,4 +54,5 @@ You can test the user stories by creating an account and playing through the gam
 ## Known Bugs
 - Sometimes the point counter will display as Object at login. When this happens, logout and back in.
 - The progress bar animations do not always sync up with the actual point-earning intervals.
-- Prestiging is still a WIP.
+- Prestiging is not functional yet, but the game is still playable.
+- The save options do not work properly.
