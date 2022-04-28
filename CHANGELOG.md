@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 - MAJOR Users can now purchase organisms, upgrades, shrooms, and items.
 - MAJOR Users can now earn points from purchased organisms.
 - MINOR Users can save their game, as well as utilize autosave.
+- MINOR Users can now run the game as an offline Electron app with `npm run electron`.
+- MINOR Users can now play the latest version of the game on the main branch by going to https://eco-idle.netlify.app.
+- MINOR Developers can download a pre-built version of the game directly from GitHub via a GitHub Action.
 
 ## Changed
 - MAJOR Added all organisms, upgrades, shrooms, and items for grassland biome.
