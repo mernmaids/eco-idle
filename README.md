@@ -51,6 +51,8 @@ You can test the user stories by creating an account and playing through the gam
 - User will be able to access our game from a hosted website with a registered domain name.
 - Developer will be able to initiate a GitHub action that automatically packages a commit's code as a downloadable, self-contained application.
 
+The Electron functionality can be tested by setting up the repository and running `npm run electron` in the project directory. The hosted website is available on https://eco-idle.netlify.app. The packaged and built application can be downloaded from this repository's GitHub Actions page, if the current commit passes the build phase.
+
 ## Known Bugs
 - Sometimes the point counter will display as Object at login. When this happens, logout and back in.
 - The progress bar animations do not always sync up with the actual point-earning intervals.
